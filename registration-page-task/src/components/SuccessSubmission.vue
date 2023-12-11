@@ -19,19 +19,32 @@ export default {
     };
   },
   mounted() {
-    this.fetchAllUsers(); 
+    const token = this.$route.params.token;
+    console.log('Token:', token);
+    this.fetchAllUsers(token); 
   },
   methods: {
-    async fetchAllUsers() {
+    async fetchAllUsers(token) {
+      console.log(`Authorization : Bearer ${token}`)
+
       try {
-        const response = await fetch('http://localhost:8085/allusers');
+        const response = await fetch('http://localhost:8085/user/mainController/allUsers', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+       
+
         const data = await response.json();
-        this.allUsers = data; 
+        console.log(data)
+        this.allUsers = data;
       } catch (error) {
-        console.error('Error fetching data:', error.message);
+        console.error('Error fetching data:', error);
       }
     }
   }
 };
-
 </script>

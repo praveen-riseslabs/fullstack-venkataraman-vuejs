@@ -77,6 +77,7 @@
     <div>
       <button>Register</button>
       <p  v-if="validateSubmit === 'invalid'">Please check all fields properly</p>
+      <p> Already have account <router-link :to="'/login'"> Login here</router-link></p>
     </div>
       
     </form>
@@ -85,7 +86,9 @@
 </template>
 
 <script>
+
 export default {
+
 data (){
   return{
    
@@ -127,45 +130,43 @@ methods:{
         this.validateNameInput = 'valid';
   },
   validateUsername(){
+
+    this.checkingUsernameInput = false;
+
+    if(this.checkingPhoneInput || this.checkingemailInput)
+    this.validateSubmit = 'invalid';
+    else
+    this.validateSubmit = 'pending';
+
     if(this.username === '')
     this.validateUsernameInput = 'invalid';
     else
-    this.checkingUsername();
-  },
-  async checkingUsername(){
-    try {
-    const response = await fetch(`http://localhost:8085/user/username/${this.username}`);
-      const data = await response.json();
-    if(data)
-    this.checkingUsernameInput = true;
-    else
-    this.checkingUsernameInput = false;
+    this.validateUsernameInput = 'pending';
 
-    } catch (error) {
-    console.error('Error while fetching:', error.message);
-  }
-
-   
   },
   validateEmail(){
+
+        this.checkingemailInput = false;
+
+    if(this.checkingPhoneInput || this.checkingUsernameInput)
+    this.validateSubmit = 'invalid';
+    else
+    this.validateSubmit = 'pending';
+
     if(this.email === '')
     this.validateEmailInput = 'invalid';
     else
-    this.checkingemail();  
-  },
-  async checkingemail(){
-    try {
-    const response = await fetch(`http://localhost:8085/user/mail/${this.email}`);
-    const data = await response.json();
-    if(data)
-      this.checkingemailInput = true;
-    else
-    this.checkingemailInput = false;
-    } catch (error) {
-    console.error('Error while fetching:', error.message);
-  }
+    this.validateEmailInput = 'pending';
   },
   validatePhone(){
+
+    this.checkingPhoneInput = false;
+
+    if(this.checkingemailInput || this.checkingUsernameInput)
+    this.validateSubmit = 'invalid';
+    else
+    this.validateSubmit = 'pending';
+
     this.phone = this.phone.replace(/\D/g, '');
       if (this.phone.length > 10) {
         this.phone = this.phone.slice(0, 10);
@@ -173,22 +174,6 @@ methods:{
       else if(this.phone.length < 10){
         this.validatePhoneInput = 'invalid';
       }
-      else{
-        this.checkingPhone();
-      }
-  },
- async checkingPhone(){
-  try {
-    const response = await fetch(`http://localhost:8085/user/phone/${this.phone}`);
-
-    const data = await response.json();
-    if(data)
-      this.checkingPhoneInput = true;
-    else
-    this.checkingPhoneInput = false;
-    } catch (error) {
-    console.error('Error while fetching:', error.message);
-  }
   },
   validatePassword(){
     if(this.password.length < 8)
@@ -203,6 +188,53 @@ methods:{
     else
     this.validateConfirmPasswordInput = 'pending';
     },
+    async checkUserExists() {
+
+      const checkUserExistsData = {
+        email: this.email.toLowerCase(),
+        phone: this.phone.toLowerCase(),
+        username: this.username.toLowerCase()
+        };
+
+   try {
+     const response = await fetch('http://localhost:8085/user/checkUser', {
+       method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify(checkUserExistsData)
+     });
+     const data = await response.json();
+     
+     if (data.exists) {
+
+      this.checkingemailInput = data.existingFields.includes('email');
+
+      this.checkingPhoneInput = data.existingFields.includes('phone');
+
+      this.checkingUsernameInput = data.existingFields.includes('username');
+
+      this.validateSubmit = 'invalid';
+
+      return;
+
+     } 
+
+
+     else {
+
+      this.checkingUsernameInput = false;
+      this.checkingPhoneInput = false;
+      this.checkingemailInput =false;
+        
+      this.validateSubmit = 'pending';
+        
+       this.submitForm();
+     }
+   } catch (error) {
+       console.error('Error while fetching:', error.message);
+   }
+ },
     async submitDetails(){
       this.validategender();
       this.validateName();
@@ -212,191 +244,51 @@ methods:{
       this.validatePassword();
       this.validateConfirmPassword();
 
-      await this.checkingUsername();
-      await this.checkingemail();
-      await this.checkingPhone();
-
     if(this.validateNameInput === 'invalid' ||
     this.validateUsernameInput === 'invalid' ||
     this.validateEmailInput === 'invalid' ||
     this.validatePasswordInput === 'invalid' ||
     this.validateConfirmPasswordInput === 'invalid' ||
     this.validateGenderInput === 'invalid' ||
-    this.validatePhoneInput === 'invalid' ||
-    this.checkingUsernameInput ||
-    this.checkingemailInput ||
-    this.checkingPhoneInput)
+    this.validatePhoneInput === 'invalid')
     {
       this.validateSubmit = 'invalid';
       return;
     }
-        this.submitForm();
+        this.checkUserExists();
     },
  async  submitForm() {
   const formData = {
-    name: this.name,
-    username: this.username,
-    email: this.email,
-    phone: this.phone,
-    password: this.password,
-    gender: this.gender
+    name: this.name.toLowerCase(),
+    username: this.username.toLowerCase(),
+    email: this.email.toLowerCase(),
+    phone: this.phone.toLowerCase(),
+    password: this.password.toLowerCase(),
+    gender: this.gender.toLowerCase()
   };
-
   try {
-    const response = await fetch('http://localhost:8085/user', {
+    const response = await fetch('http://localhost:8085/user/saveUser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
+      
     });
      const data = await response.json();
-    if(data)
-      this.callRouter();
+    if(data.status)
+    this.$router.push('/successfullyRegistered');  
+    else
+    this.$router.push('/failure');  
   } catch (error) {
     console.error('Error while fetching:', error.message);
   }
 },
-callRouter(){
-  this.$router.push('/users');  
-}
-
 
 }
 }
 </script>
 
-<style scoped>
-*{
-  font-family: "Poppins", sans-serif;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0 ;
-}
+<style src="../styles/style.css" scoped>
 
-body{
-  min-height: 100vh;
-  display:flex;
-  align-items:center;
-  justify-content: center;
-  background: linear-gradient( to right, #74B2E1 , #9A5BB4);
-  padding: 20px;
-}
-
-.container{
-background: #fff;
-max-width: 700px;
-width:100%;
-position: relative;
-padding: 25px;
-border-radius: 8px;
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.container header{
- font-size:1.5rem;
- color: #333;
- font-weight: 500;
-}
-
-.container header span{
-  text-decoration: underline;
-  text-decoration-color: rgb(130,106,251);
-}
-
-.container .form{
-  margin-top:30px;
-}
-
-.container .input-box{
-  width:100%;
-  margin-top:20px;
-}
-
-.input-box label{
-  font-weight: bold;
-  color: #333;
-}
-
-.form .input-box input{
-position: relative;
-height:50px;
-width: 100%;
-font-size: 1rem;
-color: #707070;
-margin-top: 8px;
-outline: none;
-border: 1px solid #707070;
-border-radius: 6px;
-padding:0 15px;
-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.05);
-}
-
-.form .input-box{
-  width:100%;
-  margin-top: 20px;
-}
-
-.form .column{
-  display:flex;
-  column-gap: 1rem;
-
-}
-.form .column .input-box p{
-  color: red;
-}
-
-.form .gender-box p{
-  color: red;
-}
-
-.form :where(.gender-option, .gender){
-  display: flex;
-  align-items:center;
-  column-gap: 50px;
-  flex-wrap: wrap;
-}
-
-.form .gender{
-  column-gap: 5px;
-}
-
-.gender-box h3{
-  color: #333;
-  font-size: 1rem;
-  font-weight: 400px;
-  margin-bottom: 8px;
-}
-
-.form :where(.gender input, .gender label) {
- cursor:pointer;
-}
-
-.form .gender-box{
-  margin-top: 20px;
-}
-
-@media screen and (max-width:500px){
-  .form .column{
-    flex-wrap: wrap;
-  }
-}
-
-.form button{
-  height: 55px;
-  width: 100%;
-  color: #fff;
-  font-size: 1rem;
-  border: none;
-  margin-top: 30px;
-  cursor: pointer;
-  border-radius: 6px;
-  font-weight: 400px;
-  transition: all 0.2s ease;
-  background:linear-gradient( to right, #74B2E1 , #9A5BB4);;
-  }
-
-  .form button:hover{
-    background-color: rgb(130, 106, 251);
-  }
 </style>
