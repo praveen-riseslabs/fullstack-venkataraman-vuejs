@@ -8,6 +8,8 @@ For every sucessful login it generates token and with that token we can access d
 
 I defined two roles USER and ADMIN currently not using them but just defined.
 
+Also implemented Forgot password section successfully sending the link to mail to reset password and working the fuctioning properly.
+
 
 Frontend:
 
