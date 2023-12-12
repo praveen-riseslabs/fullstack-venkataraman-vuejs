@@ -1,5 +1,5 @@
 <template>
   <h1>
-    notDone
+    something went wrong
   </h1>
 </template>

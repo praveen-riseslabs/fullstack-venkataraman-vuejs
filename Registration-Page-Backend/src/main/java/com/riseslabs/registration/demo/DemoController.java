@@ -5,9 +5,13 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.riseslabs.registration.auth.AuthenticationRequest;
+import com.riseslabs.registration.auth.MailTokenRequest;
 import com.riseslabs.registration.entity.RegistrationEntity;
 import com.riseslabs.registration.service.RegistrationServiceImpl;
 
@@ -29,6 +33,12 @@ public class DemoController {
 	@GetMapping("/sample")
 	public String hello(){
 		return "hello world";
+	}
+	
+	@PostMapping("/resetPassword")
+	public ResponseEntity<String> resetPassword(@RequestBody MailTokenRequest request){
+		
+		return registrationServiceImpl.resetPassword(request);
 	}
 
 }

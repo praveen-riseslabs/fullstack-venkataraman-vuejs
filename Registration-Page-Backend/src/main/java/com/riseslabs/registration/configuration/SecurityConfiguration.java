@@ -32,7 +32,11 @@ public class SecurityConfiguration {
 		
 		 .csrf(AbstractHttpConfigurer::disable)
 		 .authorizeHttpRequests(authorize -> authorize
-	     .requestMatchers("/user/saveUser","/user/checkUser","/user/authenticate")
+	     .requestMatchers(  "/user/saveUser",
+	    		 			"/user/checkUser",
+	    		 			"/user/authenticate",
+	    		 			"/user/authenticateToken",
+	    		 			"user/saveEmailToken")
 	     .permitAll()
 	     .anyRequest()
 	     .authenticated()

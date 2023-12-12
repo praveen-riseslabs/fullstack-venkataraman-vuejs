@@ -28,6 +28,8 @@
       <button>Login</button>
       <p  v-if="validateSubmit === 'invalid'">Please check all fields properly</p>
       <p> New User <router-link :to="'/registrationPage'"> Register here</router-link></p>
+      <p> New User <router-link :to="'/forgotpassword'"> Forget Password</router-link></p>
+
     </div>
       
     </form>

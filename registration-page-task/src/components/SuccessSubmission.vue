@@ -20,7 +20,6 @@ export default {
   },
   mounted() {
     const token = this.$route.params.token;
-    console.log('Token:', token);
     this.fetchAllUsers(token); 
   },
   methods: {

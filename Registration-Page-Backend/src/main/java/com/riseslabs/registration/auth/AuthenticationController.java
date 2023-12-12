@@ -53,4 +53,13 @@ public class AuthenticationController {
 		
 	}
 	
+	@PostMapping("/authenticateToken")
+	public ResponseEntity<AuthenticationResponse> authenticateUserExist(@RequestBody AuthenticationRequest request){
+		return ResponseEntity.ok(authenticationService.userExist(request));
+	}
+	
+	@PostMapping("/saveEmailToken")
+	public ResponseEntity<String> saveEmailToken(@RequestBody MailTokenRequest request){
+		return authenticationService.saveToken(request);
+	}
 }

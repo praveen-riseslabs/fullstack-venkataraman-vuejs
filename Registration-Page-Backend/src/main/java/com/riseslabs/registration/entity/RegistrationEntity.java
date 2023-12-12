@@ -1,7 +1,5 @@
 package com.riseslabs.registration.entity;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
