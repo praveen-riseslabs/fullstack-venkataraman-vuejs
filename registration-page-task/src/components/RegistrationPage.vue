@@ -1,192 +1,176 @@
 <template>
-<body>
-  <section class="container">
-    <header><span>Re</span>gistration</header>
-    <form @submit.prevent="submitDetails" class="form">
+  <body>
+    <section class="container">
+      <header><span>Re</span>gistration</header>
+      <form @submit.prevent="submitDetails" class="form">
 
-      <div class="column">
+        <div class="column">
 
-        <div class="input-box" >
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" autocomplete="name" placeholder="Enter your name" v-model.trim="name" @blur="validateName">
-        <p v-if="validateNameInput === 'invalid' ">Invalid name</p>
-      </div>
+          <div class="input-box">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Enter your name" v-model.trim="name"
+              @blur="validateName">
+            <p v-if="validateNameInput === 'invalid'">Invalid name</p>
+          </div>
 
-      <div class="input-box" >
-        <label for="username">User Name</label>
-        <input type="text" id="username" name="username" autocomplete="username" placeholder="Enter your username" v-model.trim="username" @blur="validateUsername">
-        <p v-if="validateUsernameInput === 'invalid'">Invalid username</p>
-        <p v-if="checkingUsernameInput">username already existed</p>
-      </div>
+          <div class="input-box">
+            <label for="username">User Name</label>
+            <input type="text" id="username" name="username" autocomplete="username" placeholder="Enter your username"
+              v-model.trim="username" @blur="validateUsername">
+            <p v-if="validateUsernameInput === 'invalid'">Invalid username</p>
+            <p v-if="checkingUsernameInput">username already existed</p>
+          </div>
 
-      </div>
-
-      <div class="column">
-
-        <div class="input-box" >
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" autocomplete="email" placeholder="Enter your email" v-model.trim="email" @blur="validateEmail">
-          <p v-if="validateEmailInput === 'invalid'"> Invalid email address </p>
-        <p v-if="checkingemailInput">email already existed</p>
         </div>
 
-        <div class="input-box" >
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" autocomplete="phone" placeholder="Enter your number" v-model.trim="phone" maxlength="10" pattern="[0-9]*" @blur="validatePhone">
-          <p v-if="validatePhoneInput === 'invalid'">Invalid phone number</p>
-          <p v-if="checkingPhoneInput">phone number already existed</p>
+        <div class="column">
+
+          <div class="input-box">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="Enter your email"
+              v-model.trim="email" @blur="validateEmail">
+            <p v-if="validateEmailInput === 'invalid'"> Invalid email address </p>
+            <p v-if="checkingemailInput">email already existed</p>
+          </div>
+
+          <div class="input-box">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="phone" placeholder="Enter your number"
+              v-model.trim="phone" maxlength="10" pattern="[0-9]*" @blur="validatePhone">
+            <p v-if="validatePhoneInput === 'invalid'">Invalid phone number</p>
+            <p v-if="checkingPhoneInput">phone number already existed</p>
+          </div>
+
         </div>
 
-      </div>
+        <div class="column">
 
-      <div class="column">
-
-          <div class="input-box" >
+          <div class="input-box">
             <label for="password">Password</label>
-           <input type="password" id="password" name="password" autocomplete="new-password" placeholder="Enter your password" v-model.trim="password" @blur="validatePassword">
-           <p v-if="validatePasswordInput === 'invalid'">password should contain 8 characters</p>
+            <input type="password" id="password" name="password" autocomplete="new-password"
+              placeholder="Enter your password" v-model.trim="password" @blur="validatePassword">
+            <p v-if="validatePasswordInput === 'invalid'">password should contain 8 characters</p>
           </div>
 
           <div class="input-box">
             <label for="confirmPassword">Confirm Password</label>
-           <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" placeholder="Confirm your password" v-model.trim="confirmPassword" @blur="validateConfirmPassword">
-           <p v-if="validateConfirmPasswordInput === 'invalid'">passwords should match</p>
+            <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password"
+              placeholder="Confirm your password" v-model.trim="confirmPassword" @blur="validateConfirmPassword">
+            <p v-if="validateConfirmPasswordInput === 'invalid'">passwords should match</p>
           </div>
 
-      </div>
+        </div>
 
-      <div class="gender-box">
-        <h3>Gender</h3>
+        <div class="gender-box">
+          <h3>Gender</h3>
           <div class="gender-option">
-              <div class="gender">
-              <input type="radio" id="check-male" name="gender" value="male" v-model="gender"/>
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" value="male" v-model="gender" />
               <label for="check-male">Male</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender" value="female" v-model="gender"/>
+              <input type="radio" id="check-female" name="gender" value="female" v-model="gender" />
               <label for="check-female">Female</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-other" name="gender" value="others" v-model="gender"/>
+              <input type="radio" id="check-other" name="gender" value="others" v-model="gender" />
               <label for="check-other">Prefer not to say</label>
             </div>
+          </div>
+          <p v-if="validateGenderInput === 'invalid'">please choose option</p>
         </div>
-        <p v-if="validateGenderInput === 'invalid'">please choose option</p>
-    </div>
 
-    <div>
-      <button>Register</button>
-      <p  v-if="validateSubmit === 'invalid'">Please check all fields properly</p>
-      <p> Already have account <router-link :to="'/login'"> Login here</router-link></p>
-    </div>
-      
-    </form>
-  </section>
-</body>
+        <div>
+          <button>Register</button>
+          <p v-if="validateSubmit === 'invalid'">Please check all fields properly</p>
+          <p> Already have account <router-link :to="'/login'"> Login here</router-link></p>
+        </div>
+
+      </form>
+    </section>
+  </body>
 </template>
 
 <script>
 
 export default {
 
-data (){
-  return{
-   
-    name:'',
-    username:'',
-    email:'',
-    phone:'',
-    password:'',
-    confirmPassword:'',
-    gender:'',
+  data() {
+    return {
 
-    validateNameInput:'pending',
-    validateUsernameInput:'pending',
-    validateEmailInput:'pending',
-    validatePasswordInput:'pending',
-    validateConfirmPasswordInput:'pending',
-    validateGenderInput:'pending',
-    validatePhoneInput:'pending',
-    validateSubmit:'pending',
+      name: '',
+      username: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+      gender: '',
 
-    checkingUsernameInput:false,
-    checkingemailInput:false,
-    checkingPhoneInput:false,
+      validateNameInput: 'pending',
+      validateUsernameInput: 'pending',
+      validateEmailInput: 'pending',
+      validatePasswordInput: 'pending',
+      validateConfirmPasswordInput: 'pending',
+      validateGenderInput: 'pending',
+      validatePhoneInput: 'pending',
+      validateSubmit: 'pending',
+
+      checkingUsernameInput: false,
+      checkingemailInput: false,
+      checkingPhoneInput: false,
 
 
-  }
-},
-methods:{
-  validategender(){
-    if(this.gender === '')
-    this.validateGenderInput='invalid';
-  else
-  this.validateGenderInput = 'pending';
+    }
   },
-  validateName(){
-        if(this.name === '')
-        this.validateNameInput = 'invalid';
-        else
-        this.validateNameInput = 'valid';
-  },
-  validateUsername(){
+  methods: {
+    validategender() {
 
-    this.checkingUsernameInput = false;
+      this.validateGenderInput = this.gender === '' ? 'invalid' : 'pending';
 
-    if(this.checkingPhoneInput || this.checkingemailInput)
-    this.validateSubmit = 'invalid';
-    else
-    this.validateSubmit = 'pending';
+    },
+    validateName() {
 
-    if(this.username === '')
-    this.validateUsernameInput = 'invalid';
-    else
-    this.validateUsernameInput = 'pending';
+      this.validateNameInput = this.name === '' ? 'invalid' : 'valid';
 
-  },
-  validateEmail(){
+    },
+    validateUsername() {
 
-        this.checkingemailInput = false;
+      this.checkingUsernameInput = false;
 
-    if(this.checkingPhoneInput || this.checkingUsernameInput)
-    this.validateSubmit = 'invalid';
-    else
-    this.validateSubmit = 'pending';
+      this.validateSubmit = this.checkingPhoneInput || this.checkingemailInput ? 'invalid' : 'pending';
 
-    if(this.email === '')
-    this.validateEmailInput = 'invalid';
-    else
-    this.validateEmailInput = 'pending';
-  },
-  validatePhone(){
+      this.validateUsernameInput = this.username === '' ? 'invalid' : 'pending';
 
-    this.checkingPhoneInput = false;
+    },
+    validateEmail() {
 
-    if(this.checkingemailInput || this.checkingUsernameInput)
-    this.validateSubmit = 'invalid';
-    else
-    this.validateSubmit = 'pending';
+      this.checkingemailInput = false;
 
-    this.phone = this.phone.replace(/\D/g, '');
-      if (this.phone.length > 10) {
-        this.phone = this.phone.slice(0, 10);
-      }
-      else if(this.phone.length < 10){
-        this.validatePhoneInput = 'invalid';
-      }
-  },
-  validatePassword(){
-    if(this.password.length < 8)
-    this.validatePasswordInput = 'invalid';
-  else
-  this.validatePasswordInput = 'pending';
+      this.validateSubmit = this.checkingPhoneInput || this.checkingUsernameInput ? 'invalid' : 'pending';
 
-  },
-  validateConfirmPassword(){
-    if(this.password != this.confirmPassword)
-    this.validateConfirmPasswordInput = 'invalid';
-    else
-    this.validateConfirmPasswordInput = 'pending';
+      this.validateEmailInput = this.email === '' ? 'invalid' : 'pending';
+
+    },
+    validatePhone() {
+
+      this.checkingPhoneInput = false;
+
+      this.validateSubmit = this.checkingemailInput || this.checkingUsernameInput ? 'invalid' : 'pending';
+
+      this.phone = this.phone.replace(/\D/g, '');
+
+      this.validatePhoneInput = this.phone.length > 10 ? 'invalid' : this.phone.slice(0, 10);
+
+    },
+    validatePassword() {
+
+      this.validatePasswordInput = this.password.length < 8 ? 'invalid' : 'pending';
+
+    },
+    validateConfirmPassword() {
+
+      this.validateConfirmPasswordInput = this.password !== this.confirmPassword ? 'invalid' : 'pending';
+
     },
     async checkUserExists() {
 
@@ -194,48 +178,48 @@ methods:{
         email: this.email.toLowerCase(),
         phone: this.phone.toLowerCase(),
         username: this.username.toLowerCase()
-        };
+      };
 
-   try {
-     const response = await fetch('http://localhost:8085/user/checkUser', {
-       method: 'POST',
-     headers: {
-       'Content-Type': 'application/json'
-     },
-     body: JSON.stringify(checkUserExistsData)
-     });
-     const data = await response.json();
-     
-     if (data.exists) {
+      try {
+        const response = await fetch('http://localhost:8085/user/checkUser', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(checkUserExistsData)
+        });
+        const data = await response.json();
 
-      this.checkingemailInput = data.existingFields.includes('email');
+        if (data.exists) {
 
-      this.checkingPhoneInput = data.existingFields.includes('phone');
+          this.checkingemailInput = data.existingFields.includes('email');
 
-      this.checkingUsernameInput = data.existingFields.includes('username');
+          this.checkingPhoneInput = data.existingFields.includes('phone');
 
-      this.validateSubmit = 'invalid';
+          this.checkingUsernameInput = data.existingFields.includes('username');
 
-      return;
+          this.validateSubmit = 'invalid';
 
-     } 
+          return;
+
+        }
 
 
-     else {
+        else {
 
-      this.checkingUsernameInput = false;
-      this.checkingPhoneInput = false;
-      this.checkingemailInput =false;
-        
-      this.validateSubmit = 'pending';
-        
-       this.submitForm();
-     }
-   } catch (error) {
-       console.error('Error while fetching:', error.message);
-   }
- },
-    async submitDetails(){
+          this.checkingUsernameInput = false;
+          this.checkingPhoneInput = false;
+          this.checkingemailInput = false;
+
+          this.validateSubmit = 'pending';
+
+          this.submitForm();
+        }
+      } catch (error) {
+        console.error('Error while fetching:', error.message);
+      }
+    },
+    async submitDetails() {
       this.validategender();
       this.validateName();
       this.validateUsername();
@@ -244,51 +228,48 @@ methods:{
       this.validatePassword();
       this.validateConfirmPassword();
 
-    if(this.validateNameInput === 'invalid' ||
-    this.validateUsernameInput === 'invalid' ||
-    this.validateEmailInput === 'invalid' ||
-    this.validatePasswordInput === 'invalid' ||
-    this.validateConfirmPasswordInput === 'invalid' ||
-    this.validateGenderInput === 'invalid' ||
-    this.validatePhoneInput === 'invalid')
-    {
-      this.validateSubmit = 'invalid';
-      return;
-    }
-        this.checkUserExists();
+      if (this.validateNameInput === 'invalid' ||
+        this.validateUsernameInput === 'invalid' ||
+        this.validateEmailInput === 'invalid' ||
+        this.validatePasswordInput === 'invalid' ||
+        this.validateConfirmPasswordInput === 'invalid' ||
+        this.validateGenderInput === 'invalid' ||
+        this.validatePhoneInput === 'invalid') {
+        this.validateSubmit = 'invalid';
+        return;
+      }
+      this.checkUserExists();
     },
- async  submitForm() {
-  const formData = {
-    name: this.name.toLowerCase(),
-    username: this.username.toLowerCase(),
-    email: this.email.toLowerCase(),
-    phone: this.phone.toLowerCase(),
-    password: this.password.toLowerCase(),
-    gender: this.gender.toLowerCase()
-  };
-  try {
-    const response = await fetch('http://localhost:8085/user/saveUser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-      
-    });
-     const data = await response.json();
-    if(data.status)
-    this.$router.push('/successfullyRegistered');  
-    else
-    this.$router.push('/failure');  
-  } catch (error) {
-    console.error('Error while fetching:', error.message);
-  }
-},
+    async submitForm() {
+      const formData = {
+        name: this.name.toLowerCase(),
+        username: this.username.toLowerCase(),
+        email: this.email.toLowerCase(),
+        phone: this.phone.toLowerCase(),
+        password: this.password.toLowerCase(),
+        gender: this.gender.toLowerCase()
+      };
+      try {
+        const response = await fetch('http://localhost:8085/user/saveUser', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
 
-}
+        });
+        const data = await response.json();
+        if (data.status)
+          this.$router.push('/successfullyRegistered');
+        else
+          this.$router.push('/failure');
+      } catch (error) {
+        console.error('Error while fetching:', error.message);
+      }
+    },
+
+  }
 }
 </script>
 
-<style src="../styles/style.css" scoped>
-
-</style>
+<style src="../styles/style.css" scoped></style>

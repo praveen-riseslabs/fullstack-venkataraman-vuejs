@@ -15,12 +15,12 @@
 export default {
   data() {
     return {
-      allUsers: [] 
+      allUsers: []
     };
   },
   mounted() {
     const token = this.$route.params.token;
-    this.fetchAllUsers(token); 
+    this.fetchAllUsers(token);
   },
   methods: {
     async fetchAllUsers(token) {
@@ -35,7 +35,7 @@ export default {
           }
         });
 
-       
+
 
         const data = await response.json();
         console.log(data)
