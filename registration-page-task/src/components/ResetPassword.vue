@@ -76,9 +76,6 @@ export default {
     },
 
     async submitForm() {
-      console.log('entered email: ' + this.email.toLowerCase())
-      console.log('entered password: ' + this.confirmpassword.toLowerCase())
-      console.log('entered token: ' + this.Token)
 
       const loginCredentials = {
         email: this.email.toLowerCase(),
