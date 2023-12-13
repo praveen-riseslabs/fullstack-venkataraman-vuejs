@@ -81,7 +81,6 @@ export default {
         email: this.email.toLowerCase(),
         token: this.confirmpassword.toLowerCase()
       };
-      console.log('json input : ' + JSON.stringify(loginCredentials))
       try {
         const response = await fetch('http://localhost:8085/user/mainController/resetPassword', {
           method: 'POST',
