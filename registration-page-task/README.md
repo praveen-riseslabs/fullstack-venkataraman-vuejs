@@ -6,7 +6,7 @@ In this project I used vue 3 as front end technology.
 
 ## 1.1 Install Node.js & NPM Package
 
-### Download Node.js and NPM (Node Package Manager) on your PC as the main action.
+ __Download Node.js and NPM (Node Package Manager) on your PC as the main action.__
 
 You may determine whether they are already downloaded by navigating to the Terminal/Command prompt window on your system and executing a few instructions.
 
