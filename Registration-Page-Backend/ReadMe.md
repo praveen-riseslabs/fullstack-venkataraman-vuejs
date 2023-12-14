@@ -64,7 +64,7 @@ If STS 4 fails to start due to Java JDK not found, ensure that JDK is installed 
 
 __Download MySQL Installer:__
 
-Visit the official MySQL download page: [MYSQL]([https://dev.mysql.com/downloads/installer/](https://dev.mysql.com/downloads/workbench/))
+Visit the official MySQL download page: [MYSQL](https://dev.mysql.com/downloads/workbench/)
 
 ![Screenshot (31)](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/fbf281c1-f423-4af7-9c46-2486d7192d8c)
 
