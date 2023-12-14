@@ -6,7 +6,7 @@ Before you begin, ensure you have Java Development Kit (JDK) installed on your W
 
 Before you begin, ensure you have MYSQL database work bench
 
-# Installation Steps:
+# STS4 Installation Steps:
 
 __Download STS:__
 
