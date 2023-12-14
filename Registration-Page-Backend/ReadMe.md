@@ -59,3 +59,67 @@ You are now ready to start creating and managing your Spring projects using the 
 ##### Java JDK Not Found:
 
 If STS 4 fails to start due to Java JDK not found, ensure that JDK is installed and the environment variable JAVA_HOME is correctly set.
+
+# MySQL Installation Steps:
+
+__Download MySQL Installer:__
+
+Visit the official MySQL download page: [MYSQL]([https://dev.mysql.com/downloads/installer/](https://dev.mysql.com/downloads/workbench/))
+
+![Screenshot (31)](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/fbf281c1-f423-4af7-9c46-2486d7192d8c)
+
+Click on the "MySQL Installer for Windows" download button.
+
+##### Run the Installer:
+
+Once the download is complete, locate the downloaded MySQL Installer executable file.
+
+Double-click the installer file to begin the installation.
+
+##### Choose Setup Type:
+
+The installer offers different setup types. Select "Developer Default" for a typical installation suitable for most development needs.
+
+You can customize by choosing "Custom" if you require specific configurations.
+
+##### Product Selection:
+
+The installer will display a list of MySQL products available for installation. Ensure that "MySQL Workbench" is selected for installation.
+
+Optionally, select other components or tools you might need, such as MySQL Server.
+
+##### MySQL Workbench Configuration:
+
+During the installation, you'll be prompted to configure MySQL Work bench.
+
+Set a root password for the MySQL root user. Ensure it's strong and secure.
+
+Choose a port for MySQL (3306 is the default) and configure other options as per your requirements.
+
+##### Installation Progress:
+
+Proceed with the installation by clicking the "Execute" button.
+
+The installer will download necessary files and configure the MySQL Workbench based on your selections.
+
+##### Complete Installation:
+
+Once the installation completes, you'll see a summary of the installed products and configurations.
+
+Click on the "Finish" button to complete the installation.
+
+##### Start MySQL Workbench:
+
+After installation, MySQL Workbench might not start automatically.
+
+You can start MySQL manually by accessing the Windows Services. Search for "Services" in the Windows search bar, locate "MySQL" in the list, and start the service.
+
+##### Troubleshooting:
+
+Port Conflict: If the chosen port (default: 3306) is already in use, consider using a different port during installation.
+
+Firewall Settings: Ensure that your firewall allows MySQL connections on the specified port.
+
+## Successfully completed the Prerequisites
+
+
