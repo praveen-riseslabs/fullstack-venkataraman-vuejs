@@ -1,6 +1,4 @@
-This is front end project for Registration and login for a user.
-
-In this project I used vue 3 as front end technology.
+This is front end project for Registration and login for a user. In this project I used vue 3 as front end technology.
 
  # 1. Vue 3 Installation Guidelines
 
