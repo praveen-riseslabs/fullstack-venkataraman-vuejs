@@ -98,3 +98,5 @@ To direct Login Page go to http://localhost:8080/registrationPage
 
 ![Registration_page](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/ae0c4f06-8dce-4865-845a-94fb1f0b01ae)
 
+__Note:__ Make sure your API Included correctly for mine I'm using http://localhost:8085 as my back end port.
+
