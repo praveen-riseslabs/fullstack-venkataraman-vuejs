@@ -141,3 +141,74 @@ Once logged in to MySQL, you can create a new database using the CREATE DATABASE
 ##### CREATE DATABASE your_database_name;
 
 Replace your_database_name with the desired name for your database. Remember the name of the database you created.
+
+
+__Importing and running a Java Spring Boot application involves a few steps, primarily related to setting up the project in your preferred integrated development environment (IDE) and running the application. Here's a general guide:__
+
+ ## 1. Importing the Spring Boot Project:
+
+### a. Cloning or Downloading the Project:
+
+If using Git:
+
+Open Git Bash or a terminal.
+
+Use git clone <repository_URL> to clone the project repository to your local machine.
+
+#### If downloading as a ZIP:
+
+Download the project as a ZIP file from the repository (GitHub, GitLab, etc.).
+
+Extract the ZIP file to a preferred directory on your computer.
+
+### b. Opening the Project in IDE:
+
+Open your preferred IDE (IntelliJ IDEA, Eclipse, or Spring Tool Suite). For mine I choosen Eclipse.
+
+### c. Importing the Project:
+
+#### In Eclipse:
+
+Two ways to import the project:
+
+1. Click on "File" --> "Open Projects from file system." --> "Select the project folder in your directory".
+
+2. Click on "File" --> "Import" --> "Maven" --> "Existing project" --> "Select the project folder in your directory".
+
+### d. Resolving Dependencies:
+
+The IDE will automatically download the necessary dependencies specified in the project's build file (pom.xml for Maven or build.gradle for Gradle).
+
+## 2. Configuring and Running the Spring Boot Application:
+
+__Note:__ It is main to configure in your project to save the dta
+
+### a. Changing Application Properties:
+
+Locate the application.properties or application.yml file in the project's resources directory.
+
+Update database connection properties (if needed), server port, or any other configurations required for your environment.
+
+### b. Running the Application:
+
+Two ways to run the Application
+
+1. Right click on the project folder --> "Run As" --> "Spring Boot Application".
+
+2. Find the main class annotated with @SpringBootApplication. Right-click on this class and select the option to "Run As" --> "Spring Boot Application".If prompted, choose the main method to start the application.
+   
+3. The default endpoint for a Spring Boot application is usually http://localhost:8080. but I inserted __http://localhost:8085__ port for avoiding front end, back end running on same server please go with the Application properties image I attached in above section. 
+
+### c. Monitoring Application Output:
+
+Check the console in the IDE for application logs, including any startup messages, errors, or endpoints available.
+
+### d. Accessing and Testing the Application:
+
+Open a web browser or use tools like Postman to interact with the application's endpoints.
+
+## 3. Additional Tips:
+
+Before running the application, ensure that any necessary configurations (like database connection properties) are properly set up in the application.properties or application.yml file.
+
+By following these detailed steps, newcomers to Spring Boot can successfully import a project, configure it, and run the application within their preferred IDE.
