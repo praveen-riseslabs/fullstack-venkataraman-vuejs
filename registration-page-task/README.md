@@ -22,6 +22,8 @@ If they are not downloaded, you will see a warning like “command not found” 
 
 Navigate to the Node.js portal in the internet browser [Node.js](https://nodejs.org/en). You will find two variants; It is recommended choosing LTS, the better reliable version, that is usually preferred for most visitors.
 
+![Node js Home Page](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/c0347e2c-7cef-4d12-a20c-222469d90543)
+
 Clicking the LTS button initiates the Node.js package file installing on the PC.
 
 To download the file, double-click the file to open the installation window. Installing Node.js is the same as installing any other software.
