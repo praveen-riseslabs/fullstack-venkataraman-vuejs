@@ -173,7 +173,17 @@ Two ways to import the project:
 
 1. Click on "File" --> "Open Projects from file system." --> "Select the project folder in your directory".
 
-2. Click on "File" --> "Import" --> "Maven" --> "Existing project" --> "Select the project folder in your directory".
+![part 1](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/7f69b3f0-6842-412a-8591-738749b474a1)
+
+![part 2](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/13a4b9e7-c5cd-4238-a25b-c8feb213a360)
+
+3. Click on "File" --> "Import" --> "Maven" --> "Existing project" --> "Select the project folder in your directory".
+
+![import part 1](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/01d00422-6df3-4b77-8d89-38114cacf82f)
+
+![import part 2 ](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/bd0e5fb8-5279-4464-b14e-7967ba153c1d)
+
+![import part 3](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/011547d2-8cd3-4e5b-9126-07e9f5f0802a)
 
 ### d. Resolving Dependencies:
 
@@ -181,13 +191,17 @@ The IDE will automatically download the necessary dependencies specified in the 
 
 ## 2. Configuring and Running the Spring Boot Application:
 
-__Note:__ It is main to configure in your project to save the dta
+__Note:__ It is neccesary to configure Application.properties in your project to save the data I'm attaching the picture for your reference.
 
 ### a. Changing Application Properties:
 
 Locate the application.properties or application.yml file in the project's resources directory.
 
-Update database connection properties (if needed), server port, or any other configurations required for your environment.
+__Path:__ Project/src/main/resources/application.prperties
+
+Update database connection properties, server port, or any other configurations required for your environment. Kindly observe the below picture I'm attaching and change them as connection credentials.
+
+![Application properties](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/0a05febd-3fcd-4bd6-afda-591826fdeff0)
 
 ### b. Running the Application:
 
@@ -195,9 +209,13 @@ Two ways to run the Application
 
 1. Right click on the project folder --> "Run As" --> "Spring Boot Application".
 
-2. Find the main class annotated with @SpringBootApplication. Right-click on this class and select the option to "Run As" --> "Spring Boot Application".If prompted, choose the main method to start the application.
+![run througn project folder](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/f753c22f-558c-4327-8cae-f7b1d40392d5)
+
+3. Find the main class annotated with @SpringBootApplication. Right-click on this class and select the option to "Run As" --> "Spring Boot Application".If prompted, choose the main method to start the application.
+
+![run througn main class](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/a2240286-2975-45cb-a701-485919a8a233)
    
-3. The default endpoint for a Spring Boot application is usually http://localhost:8080. but I inserted __http://localhost:8085__ port for avoiding front end, back end running on same server please go with the Application properties image I attached in above section. 
+5. The default endpoint for a Spring Boot application is usually http://localhost:8080. but I inserted __http://localhost:8085__ port for avoiding front end, back end running on same server please go with the Application properties image I attached in above section. 
 
 ### c. Monitoring Application Output:
 
