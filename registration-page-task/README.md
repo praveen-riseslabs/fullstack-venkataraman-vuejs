@@ -66,13 +66,13 @@ After completion of vue installation follow the below steps to run the project.
 
 Use git clone to get a copy of the project onto your local machine by using below command.
 
-#### git clone <repository-url>
+#### git clone repository-url
 
 ### Install Dependencies:
 
 Navigate to the project directory and install the required dependencies using npm or yarn.
 
-#### cd <project-folder>
+#### cd project-folder
 
 #### npm install
 
