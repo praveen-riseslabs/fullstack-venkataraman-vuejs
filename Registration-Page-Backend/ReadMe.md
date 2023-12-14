@@ -6,9 +6,9 @@ Before you begin, ensure you have Java Development Kit (JDK) installed on your W
 
 Before you begin, ensure you have MYSQL database work bench
 
-# STS4 Installation Steps:
+# STS 4 Installation Steps:
 
-__Download STS:__
+__Download STS 4:__
 
 Visit the official Spring Tool Suite download page: [STS](https://spring.io/tools)  Installing Spring boot is the same as installing any other software.
 
@@ -16,7 +16,7 @@ Visit the official Spring Tool Suite download page: [STS](https://spring.io/tool
 
 Choose platform as you like for mine I choosen Spring tools 4 for Eclipse (Windows).
 
-Click on the "Download STS" button. Choose the appropriate version based on your Windows architecture (32-bit or 64-bit).
+Click on the "Download STS 4" button. Choose the appropriate version based on your Windows architecture (32-bit or 64-bit).
 
 ##### Run the Installer:
 
@@ -32,30 +32,30 @@ Select a preferred directory or use the default one suggested by the installer.
 
 ##### Installation Progress:
 
-The installer will begin copying files and configuring the STS environment.
+The installer will begin copying files and configuring the STS 4 environment.
 
 Wait for the installation process to complete. This may take a few minutes depending on your system's performance.
 
-##### Launch STS:
+##### Launch STS 4:
 
-Once the installation finishes, you'll have the option to launch STS immediately after installation.
+Once the installation finishes, you'll have the option to launch STS 4 immediately after installation.
 
-If not automatically launched, locate the STS executable file in the installation directory and double-click it to open the Spring Tool Suite.
+If not automatically launched, locate the STS 4 executable file in the installation directory and double-click it to open the Spring Tool Suite 4.
 
-##### Configure STS:
+##### Configure STS 4:
 
-Upon launching STS for the first time, you might be prompted to select a workspace directory.
+Upon launching STS 4 for the first time, you might be prompted to select a workspace directory.
 
 Choose a workspace directory where your projects will be stored, or stick with the default workspace provided by STS.
 
-##### Start Using STS:
+##### Start Using STS 4:
 
-After configuring the workspace, STS will open with the welcome screen.
+After configuring the workspace, STS 4 will open with the welcome screen.
 
-You are now ready to start creating and managing your Spring projects using the Spring Tool Suite on your Windows machine.
+You are now ready to start creating and managing your Spring projects using the Spring Tool Suite 4 on your Windows machine.
 
 ### Troubleshooting:
 
 ##### Java JDK Not Found:
 
-If STS fails to start due to Java JDK not found, ensure that JDK is installed and the environment variable JAVA_HOME is correctly set.
+If STS 4 fails to start due to Java JDK not found, ensure that JDK is installed and the environment variable JAVA_HOME is correctly set.
