@@ -88,10 +88,13 @@ Open your browser and navigate to the URL where the Vue.js application is runnin
 
 ### Login page:
 
+To direct Login Page go to http://localhost:8080/login.
+
 ![login-page](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/56b4f57f-b9ed-4c49-b0dc-e6e59edba15f)
 
 ### Registration Page
 
+To direct Login Page go to http://localhost:8080/registrationPage
 
 ![Registration_page](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/ae0c4f06-8dce-4865-845a-94fb1f0b01ae)
 
