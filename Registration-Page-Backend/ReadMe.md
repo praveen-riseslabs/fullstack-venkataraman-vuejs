@@ -122,4 +122,22 @@ Firewall Settings: Ensure that your firewall allows MySQL connections on the spe
 
 ## Successfully completed the Prerequisites
 
+__Note:__ Before ruuning the server Create a database in the my sql by using below commands
 
+Access MySQL Command Line:
+
+Open a Command Prompt or terminal window.
+
+#### Enter the MySQL command line interface by typing:
+
+##### mysql -u your_username -p
+
+Replace your_username with your MySQL username. You'll be prompted to enter your MySQL password.
+
+#### Create a Database:
+
+Once logged in to MySQL, you can create a new database using the CREATE DATABASE command. For example:
+
+##### CREATE DATABASE your_database_name;
+
+Replace your_database_name with the desired name for your database. Remember the name of the database you created.
