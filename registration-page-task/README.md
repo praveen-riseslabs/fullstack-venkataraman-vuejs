@@ -70,9 +70,7 @@ Use git clone to get a copy of the project onto your local machine by using belo
 
 ### Install Dependencies:
 
-Navigate to the project directory and install the required dependencies using npm or yarn.
-
-#### cd project-folder
+Open VS code studio --> open folder --> select folder. After selecting folder Open terminal and install the required dependencies using npm or yarn.
 
 #### npm install
 
