@@ -20,8 +20,7 @@ To confirm the npm, execute the below  code in the  terminal.
 
 If they are not downloaded, you will see a warning like “command not found” when performing node and npm versions test commands. Therefore, you will be required to install these.
 
-Navigate to the Node.js portal in the internet browser [Node.js]([URL](https://nodejs.org/en))
-; you will find two variants; It is recommended choosing LTS, the better reliable version, that is usually preferred for most visitors.
+Navigate to the Node.js portal in the internet browser[Node.js]([URL](https://nodejs.org/en)). You will find two variants; It is recommended choosing LTS, the better reliable version, that is usually preferred for most visitors.
 
 Clicking the LTS button initiates the Node.js package file installing on the PC.
 
