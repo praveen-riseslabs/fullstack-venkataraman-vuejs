@@ -85,3 +85,13 @@ After installing the dependencies, start the development server by using below c
 ### Access the Application:
 
 Open your browser and navigate to the URL where the Vue.js application is running. By default, it might be http://localhost:8080.
+
+### Login page:
+
+![login-page](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/56b4f57f-b9ed-4c49-b0dc-e6e59edba15f)
+
+### Registration Page
+
+
+![Registration_page](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/ae0c4f06-8dce-4865-845a-94fb1f0b01ae)
+
