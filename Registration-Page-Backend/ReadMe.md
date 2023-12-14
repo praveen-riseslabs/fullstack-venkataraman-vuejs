@@ -177,7 +177,7 @@ Two ways to import the project:
 
 ![part 2](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/13a4b9e7-c5cd-4238-a25b-c8feb213a360)
 
-3. Click on "File" --> "Import" --> "Maven" --> "Existing project" --> "Select the project folder in your directory".
+2. Click on "File" --> "Import" --> "Maven" --> "Existing project" --> "Select the project folder in your directory".
 
 ![import part 1](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/01d00422-6df3-4b77-8d89-38114cacf82f)
 
@@ -211,11 +211,11 @@ Two ways to run the Application
 
 ![run througn project folder](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/f753c22f-558c-4327-8cae-f7b1d40392d5)
 
-3. Find the main class annotated with @SpringBootApplication. Right-click on this class and select the option to "Run As" --> "Spring Boot Application".If prompted, choose the main method to start the application.
+2. Find the main class annotated with @SpringBootApplication. Right-click on this class and select the option to "Run As" --> "Spring Boot Application".If prompted, choose the main method to start the application.
 
 ![run througn main class](https://github.com/praveen-riseslabs/fullstack-venkataraman-vuejs/assets/152584709/a2240286-2975-45cb-a701-485919a8a233)
    
-5. The default endpoint for a Spring Boot application is usually http://localhost:8080. but I inserted __http://localhost:8085__ port for avoiding front end, back end running on same server please go with the Application properties image I attached in above section. 
+The default endpoint for a Spring Boot application is usually http://localhost:8080. but I inserted __http://localhost:8085__ port for avoiding front end, back end running on same server please go with the Application properties image I attached in above section. 
 
 ### c. Monitoring Application Output:
 
