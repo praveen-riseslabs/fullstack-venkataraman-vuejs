@@ -1,9 +1,10 @@
-This is Back end project for Registration and login for a user. In this project I used Spring boot 3.2 as back end technology and mysql as database.
+__This is Back end project for Registration and login for a user. In this project I used Spring boot 3.2 as back end technology and mysql as database.__
 
 # Prerequisites:
 
-__Before you begin, ensure you have Java Development Kit (JDK) installed on your Windows machine.__
-__Before you begin, ensure you have MYSQL database work bench__
+Before you begin, ensure you have Java Development Kit (JDK) installed on your Windows machine.
+
+Before you begin, ensure you have MYSQL database work bench
 
 # Installation Steps:
 
