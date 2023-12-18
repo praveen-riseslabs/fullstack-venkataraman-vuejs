@@ -30,7 +30,7 @@
           <button>Login</button>
           <p v-if="validateSubmit === 'invalid'">Please check all fields properly</p>
           <p> New User <router-link :to="'/registrationPage'"> Register here</router-link></p>
-          <p> New User <router-link :to="'/forgotpassword'"> Forget Password</router-link></p>
+          <p> Existing User <router-link :to="'/forgotpassword'"> Forget Password</router-link></p>
 
         </div>
 
@@ -41,7 +41,11 @@
 
 
 <script>
+
+
 export default {
+
+
 
   data() {
     return {
@@ -56,6 +60,8 @@ export default {
   },
 
   methods: {
+
+   
 
     validateUsername() {
 
@@ -114,11 +120,13 @@ export default {
 
         const data = await response.json();
 
-        if (data) {
-          const token = data.token;
-          localStorage.setItem('token', token);
+        if (data && data.token && data.userid){
+         this.$store.commit('pass',data)
+          // const token = data.token;
+          // const userid = data.userid;
+          // this.$router.push({ name: 'success', params: { token, userid} });
+          this.$router.push('/success');
 
-          this.$router.push({ name: 'success', params: { token } });
         } else {
           this.$router.push('/failure');
         }

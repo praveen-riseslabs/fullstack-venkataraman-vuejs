@@ -49,7 +49,8 @@
       color: #333;
     }
     
-    .form .input-box input{
+    .form .input-box input,
+    .form .input-box option{
     position: relative;
     height:50px;
     width: 100%;
@@ -137,3 +138,16 @@
         background-color: rgb(130, 106, 251);
       }
     
+      .form .input-box textarea {
+        position: relative;
+        height:200px;
+        width: 100%;
+        font-size: 1rem;
+        color: #707070;
+        margin-top: 8px;
+        outline: none;
+        border: 1px solid #707070;
+        border-radius: 6px;
+        padding:10px 15px;
+        box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.05);
+      }

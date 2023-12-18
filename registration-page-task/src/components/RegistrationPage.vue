@@ -159,7 +159,7 @@ export default {
 
       this.phone = this.phone.replace(/\D/g, '');
 
-      this.validatePhoneInput = this.phone.length > 10 ? 'invalid' : this.phone.slice(0, 10);
+      this.validatePhoneInput = (this.phone.length < 10 || this.phone === '') ? 'invalid' : this.phone.slice(0, 10);
 
     },
     validatePassword() {

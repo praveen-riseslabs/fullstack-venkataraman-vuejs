@@ -1,5 +1,4 @@
 <template>
-  <h1>
-    something went wrong
-  </h1>
+  <h1> failure </h1>
+ 
 </template>

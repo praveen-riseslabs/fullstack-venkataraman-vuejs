@@ -90,10 +90,7 @@ export default {
           },
           body: JSON.stringify(loginCredentials)
         });
-
         const data = await response.json();
-
-        console.log(data.status)
         if (data.status) {
           alert("Password successfully changed page redirecting to login page...")
 
