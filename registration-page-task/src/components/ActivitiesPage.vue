@@ -6,11 +6,7 @@
       <div class="routerLink"><router-link to="/onemonth">One Month</router-link></div>
       <div class="routerLink"><router-link to="/oneyear">One Year</router-link></div>
     </div>
-    <div class="search-bar">
-      <input type="text" v-model="searchKeyword" placeholder="Search..." class="search-input">
-      <button @click="searchItems" class="search-button">Search</button>
-    </div>
-  </nav>
+    </nav>
 </template>
 
 <script>
@@ -48,23 +44,4 @@ export default {
   cursor: pointer;
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.search-button {
-  padding: 8px 16px;
-  background-color: aquamarine;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-}
 </style>

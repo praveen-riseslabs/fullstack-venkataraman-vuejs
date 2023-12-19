@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="search-bar">
+      <input
+        type="text"
+        v-model.trim="searchKeyword"
+        placeholder="Search..."
+        class="search-input"
+      >
+    </div>
+
     <h2>List of Items</h2>
     <table v-if="itemList.length > 0" class="item-table">
       <thead>
@@ -12,13 +21,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in itemList" :key="index">
-          <td>{{ item.title }}</td>
-          <td>{{ item.description }}</td>
-          <td>{{ item.startTime }}</td>
-          <td>{{ item.endTime }}</td>
-          <td>{{ item.date }}</td>
-        </tr>
+        <tr v-for="(filteredItems, index) in filteredItems" :key="index">
+          <td>{{ filteredItems.title }}</td>
+          <td>{{ filteredItems.description }}</td>
+          <td>{{ filteredItems.startTime }}</td>
+          <td>{{ filteredItems.endTime }}</td>
+          <td>{{ filteredItems.date }}</td>
+          </tr>
       </tbody>
     </table>
     <p v-else>No items available</p>
@@ -30,12 +39,26 @@
 export default {
   data() {
     return {
-      itemList: [] // Initially an empty array to store items from backend
+      itemList: [],
+      searchKeyword: ''
     };
   },
   mounted() {
 
     this.fetchDataFromBackend();
+  },
+  computed: {
+    filteredItems() {
+      // Filtering logic based on searchKeyword
+      if (!this.searchKeyword) {
+        return this.itemList;
+      } else {
+        const keyword = this.searchKeyword.toLowerCase();
+        return this.itemList.filter(item =>
+          item.title.includes(keyword)
+                  );
+              }
+    },
   },
   methods: {
     async fetchDataFromBackend() {

@@ -14,7 +14,7 @@ import OneMonth from './components/Alldays/OneMonth.vue';
 const routes = [
   {
     path: '/success',//:token/:userid',  Define a parameter in the route
-    name: 'success',
+    name: 'SuccessPage',
     component: SuccessSubmission,
     props: true // To pass the token as a prop to the SuccessPage component
   },

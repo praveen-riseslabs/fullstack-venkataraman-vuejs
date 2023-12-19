@@ -60,6 +60,7 @@ export default {
       ActivityDescription: '',
       startTime: '',
       endTime: '',
+      id:'',
 
       validateTitleInput: 'pending',
       validateDescriptionInput: 'pending',
@@ -68,7 +69,16 @@ export default {
       validateStartInput:'pending'
     }
   },
- // props: ['token','userid'],
+  created() {
+    // Retrieve route parameters (activity details)
+    const { title, description, startTimeString, endTimeString ,id } = this.$route.query;
+
+    this.ActivityTitle = title;
+    this.ActivityDescription = description;
+    this.startTime = startTimeString;
+    this.endTime = endTimeString;
+    this.id = id;
+     },
   methods: {
     validateTitle() {
       if (this.ActivityTitle === '')
@@ -115,6 +125,15 @@ export default {
 
     async submitForm() {
 
+      const updatedData = {
+        title: this.ActivityTitle.toLowerCase(),
+        desccription: this.ActivityDescription.toLowerCase(),
+        startTimeString:this.startTime,
+        endTimeString:this.endTime,
+        id : this.id,
+        userid:this.$store.getters.finalUserid
+      };
+
       const loginCredentials = {
         title: this.ActivityTitle.toLowerCase(),
         desccription: this.ActivityDescription.toLowerCase(),
@@ -124,7 +143,20 @@ export default {
       };
 
       try {
-        const response = await fetch('http://localhost:8085/user/mainController/addActivity', {
+        let response;
+        if(this.id){
+           response = await fetch('http://localhost:8085/user/mainController/updateActivity', {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${this.$store.getters.finalToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedData)
+        });
+        }
+
+        else{
+         response = await fetch('http://localhost:8085/user/mainController/addActivity', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${this.$store.getters.finalToken}`,
@@ -132,7 +164,7 @@ export default {
           },
           body: JSON.stringify(loginCredentials)
         });
-
+      }
         const data = await response.json();
 
         if (data.status) {

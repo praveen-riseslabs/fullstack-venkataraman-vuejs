@@ -1,7 +1,17 @@
 <template>
   <div>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        v-model.trim="searchKeyword"
+        placeholder="Search..."
+        class="search-input"
+      >
+    </div>
+
     <h2>List of Items</h2>
-    <table v-if="itemList.length > 0" class="item-table">
+    <table v-if="filteredItems.length > 0" class="item-table">
       <thead>
         <tr>
           <th>Title</th>
@@ -13,12 +23,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in itemList" :key="index">
-          <td>{{ item.title }}</td>
-          <td>{{ item.description }}</td>
-          <td>{{ item.startTime }}</td>
-          <td>{{ item.endTime }}</td>
-          <td>{{ item.date }}</td>
+        <tr v-for="(filteredItems, index) in filteredItems" :key="index">
+          <td>{{ filteredItems.title }}</td>
+          <td>{{ filteredItems.description }}</td>
+          <td>{{ filteredItems.startTime }}</td>
+          <td>{{ filteredItems.endTime }}</td>
+          <td>{{ filteredItems.date }}</td>
           <td>
             <button @click="editItem(index)" class="action-btn">Edit</button>
             <button @click="deleteItem(index)" class="action-btn">Delete</button>
@@ -37,12 +47,26 @@
 export default {
   data() {
     return {
-      itemList: [] // Initially an empty array to store items from backend
+      itemList: [],
+      searchKeyword: ''
     };
   },
   mounted() {
 
     this.fetchDataFromBackend();
+  },
+  computed: {
+    filteredItems() {
+      // Filtering logic based on searchKeyword
+      if (!this.searchKeyword) {
+        return this.itemList;
+      } else {
+        const keyword = this.searchKeyword.toLowerCase();
+        return this.itemList.filter(item =>
+          item.title.includes(keyword)
+                  );
+              }
+    },
   },
   methods: {
     async fetchDataFromBackend() {
@@ -67,9 +91,16 @@ export default {
 
     },
     editItem(index) {
-      // Implement the logic to edit an item at the given index
-      // You can redirect to a different route or open a modal for editing
-      console.log(`Editing item at index ${index}:`, this.itemList[index]);
+      this.$router.push({
+    name: 'SuccessPage',
+    query: {
+      title: this.itemList[index].title,
+      description: this.itemList[index].description,
+      startTimeString: this.itemList[index].startTime,
+      endTimeString: this.itemList[index].endTime,
+      id:this.itemList[index].id
+    }
+  });
     },
     deleteItem(index){
       this.fetchDataToBackend(index);
@@ -127,5 +158,26 @@ try {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Add some space below the search bar */
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 300px;
+  font-size: 16px;
+  outline: none; /* Remove default focus outline */
+  transition: border-color 0.3s ease-in-out; /* Smooth transition for border color */
+}
+
+/* Style when input field is focused */
+.search-input:focus {
+  border-color: #007bff; /* Example color */
 }
 </style>
