@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MailTokenRequest {
+public class MailTokenRequest {  //we used this for password also
 	
-	private String email;
+	private String email;  
 	
 	private String token;
 	

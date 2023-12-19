@@ -1,5 +1,4 @@
-package com.riseslabs.registration.auth;
-
+package com.riseslabs.registration.Requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
-
-	private String token;
+public class UseridRequest {
 	private String userid;
 }

@@ -1,13 +1,10 @@
 package com.riseslabs.registration.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.riseslabs.registration.auth.MailTokenRequest;
 import com.riseslabs.registration.entity.RegistrationEntity;
 import com.riseslabs.registration.repository.RegistrationRepository;
@@ -25,10 +22,6 @@ public class RegistrationServiceImpl {
 
 		return registrationRepository.save(registrationEntity);
 
-	}
-
-	public List<RegistrationEntity> viewAllUsers() {
-		return registrationRepository.findAll();
 	}
 
 	public boolean findByPhone(String phone) {

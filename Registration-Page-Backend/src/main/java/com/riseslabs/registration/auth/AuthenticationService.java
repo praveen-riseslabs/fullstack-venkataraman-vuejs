@@ -77,8 +77,10 @@ public class AuthenticationService {
 				request.getUsername(), request.getUsername());
 
 		var jwtToken = jwtService.generateToken(user);
+		
+		String uuid = user.getId().toString();
 
-		return AuthenticationResponse.builder().token(jwtToken).build();
+		return AuthenticationResponse.builder().token(jwtToken).userid(uuid).build();
 	}
 
 	public List<String> checkExistingFields(String email, String phone, String username) {
