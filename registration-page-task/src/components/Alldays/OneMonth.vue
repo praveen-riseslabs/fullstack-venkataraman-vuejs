@@ -1,17 +1,7 @@
 <template>
-  <div>
-    <div class="search-bar">
-      <input
-        type="text"
-        v-model.trim="searchKeyword"
-        placeholder="Search..."
-        class="search-input"
-      >
-    </div>
-
-    <h2>List of Items</h2>
-    <table v-if="itemList.length > 0" class="item-table">
-      <thead>
+  <div class="container my-2">
+    <table v-if="itemList.length > 0" class="table table-bordered table-striped table-hover">
+      <thead class="table-dark">
         <tr>
           <th>Title</th>
           <th>Description</th>
@@ -20,7 +10,7 @@
           <th>Date</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table table-hover">
         <tr v-for="(filteredItems, index) in filteredItems" :key="index">
           <td>{{ filteredItems.title }}</td>
           <td>{{ filteredItems.description }}</td>
@@ -44,8 +34,13 @@ export default {
     };
   },
   mounted() {
-
     this.fetchDataFromBackend();
+    this.searchKeyword = this.$store.getters.finalSearchkey;
+  },
+  watch: {
+    '$store.getters.finalSearchkey'(newVal) {
+      this.searchKeyword = newVal;
+    }
   },
   computed: {
     filteredItems() {

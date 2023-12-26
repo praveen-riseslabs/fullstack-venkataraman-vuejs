@@ -122,10 +122,8 @@ export default {
 
         if (data && data.token && data.userid){
          this.$store.commit('pass',data)
-          // const token = data.token;
-          // const userid = data.userid;
-          // this.$router.push({ name: 'success', params: { token, userid} });
-          this.$router.push('/success');
+
+          this.$router.push('/dashboard');
 
         } else {
           this.$router.push('/failure');

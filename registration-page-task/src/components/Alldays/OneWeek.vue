@@ -1,17 +1,8 @@
 <template>
-  <div>
-    <div class="search-bar">
-      <input
-        type="text"
-        v-model.trim="searchKeyword"
-        placeholder="Search..."
-        class="search-input"
-      >
-    </div>
-
-    <h2>List of Items</h2>
-    <table v-if="itemList.length > 0" class="item-table">
-      <thead>
+   
+    <div class="container my-2">
+    <table v-if="itemList.length > 0" class="table table-bordered table-striped table-hover">
+      <thead class="table-dark">
         <tr>
           <th>Title</th>
           <th>Description</th>
@@ -20,7 +11,7 @@
           <th>Date</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table table-hover">
         <tr v-for="(filteredItems, index) in filteredItems" :key="index">
           <td>{{ filteredItems.title }}</td>
           <td>{{ filteredItems.description }}</td>
@@ -40,16 +31,20 @@ export default {
   data() {
     return {
       itemList: [],
-      searchKeyword: ''
+      searchKeyword:''
     };
   },
   mounted() {
-
     this.fetchDataFromBackend();
+    this.searchKeyword = this.$store.getters.finalSearchkey;
+  },
+  watch: {
+    '$store.getters.finalSearchkey'(newVal) {
+      this.searchKeyword = newVal;
+    }
   },
   computed: {
     filteredItems() {
-      // Filtering logic based on searchKeyword
       if (!this.searchKeyword) {
         return this.itemList;
       } else {
@@ -86,31 +81,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.item-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
 
-.item-table th,
-.item-table td {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-
-.item-table th {
-  background-color: #f0f0f0;
-}
-
-.item-table .action-btn {
-  padding: 6px 10px;
-  margin-right: 5px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>
