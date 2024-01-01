@@ -6,12 +6,13 @@ import failureSubmission from './components/failureSubmission.vue';
 import RegisteredUserSucess from './components/RegisteredUserSucess.vue';
 import ForgotPassword from './components/ForgotPassword.vue';
 import ResetPassword from './components/ResetPassword.vue';
-import DashboardPage from './components/DashboardPage.vue';
+// import DashboardPage from './components/DashboardPage.vue';
 import MainbarPage from './components/UIcomponents/MainbarPage.vue';
 import TodayPage from './components/Alldays/TodayPage.vue';
 import OneWeek from './components/Alldays/OneWeek.vue';
 import OneYear from './components/Alldays/OneYear.vue';
 import OneMonth from './components/Alldays/OneMonth.vue';
+
 // import SidebarPage from './components/UIcomponents/SidebarPage.vue';
 
 const routes = [
@@ -39,16 +40,13 @@ const routes = [
 
   {
     path: '/mainbar', component: MainbarPage, children: [
-      { path: '/dashboard', component: DashboardPage },
+      // { path: '/dashboard', component: DashboardPage },
       { path: '/today', component: TodayPage },
       { path: '/oneweek', component: OneWeek },
       { path: '/oneyear', component: OneYear },
       { path: '/onemonth', component: OneMonth }
     ]
   },
-
-  {
-    path: '/dashboard', component: DashboardPage}
 ];
 
 const router = createRouter({

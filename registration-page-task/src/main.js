@@ -14,7 +14,9 @@ state(){
   return{
     token:'',
     userid:'',
-    searchKey:''
+    searchKey:'',
+    isSidebarOpen: false, 
+    name:''
   };
 },
 
@@ -22,9 +24,13 @@ mutations:{
   pass(state,payload){
     state.token = payload.token;
     state.userid = payload.userid;
+    state.name = payload.userName;
   },
   searchPass(state,payload){
     state.searchKey = payload;
+  },
+  toggleSidebar(state) {
+    state.isSidebarOpen = !state.isSidebarOpen; // changed
   }
 },
 
@@ -35,8 +41,14 @@ getters:{
   finalUserid(state){
     return state.userid;
   },
+  finalName(state){
+    return state.name;
+  },
   finalSearchkey(state){
     return state.searchKey;
+  },
+  isSidebarOpen(state) { // changed
+    return state.isSidebarOpen;
   }
 }
 

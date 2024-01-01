@@ -1,7 +1,7 @@
 
 <template>
-  
-<mainbar-page/>
+
+    <mainbar-page />
 
 </template>
 
@@ -15,9 +15,3 @@ export default {
   }
 }
 </script>
-
-
-
-
-
-

@@ -168,7 +168,7 @@ export default {
         const data = await response.json();
 
         if (data.status) {
-          this.$router.push('/dashboard');
+          this.$router.push('/mainbar');
         } else {
           this.$router.push('/failure');
         }

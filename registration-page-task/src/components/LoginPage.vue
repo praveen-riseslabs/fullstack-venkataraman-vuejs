@@ -120,10 +120,10 @@ export default {
 
         const data = await response.json();
 
-        if (data && data.token && data.userid){
+        if (data && data.token && data.userid && data.userName){
          this.$store.commit('pass',data)
 
-          this.$router.push('/dashboard');
+          this.$router.push('/mainbar');
 
         } else {
           this.$router.push('/failure');

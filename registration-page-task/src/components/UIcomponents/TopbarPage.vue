@@ -4,11 +4,6 @@
       <nav class="navbar navbar-expand-lg bg-custom-color fixed-top">
       <!-- Container wrapper -->
       <div class="container-fluid">
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
-          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
 
         <!-- Brand -->
         <a class="navbar-brand" href="#">
@@ -17,7 +12,7 @@
           </h3>
 
         </a>
-        <button class="openbtn ms-2" @click="openNav">☰</button>  
+        <button class="openbtn ms-2" @click="toggleSidebar"><i class="bi bi-list"></i></button>  
 
         <ul class="navbar-nav ms-auto d-flex flex-row">
 
@@ -55,7 +50,7 @@
               <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle" height="40"
                 alt="Avatar" loading="lazy" />
             </a>
-            <h6 class=" text-white m-0 dropdown-toggle hidden-arrow">username</h6>
+            <h6 class=" text-white m-0 dropdown-toggle hidden-arrow">{{ this.$store.getters.finalName }}</h6>
           </li>
         </ul>
       </div>
@@ -77,19 +72,15 @@ export default {
       this.$store.commit('searchPass',newVal);
     }
   },
-  methods:{
-    toggleActive () {
-      this.$router.push('/success');
-    }
+  methods: {
+    toggleSidebar() {
+      this.$store.commit('toggleSidebar');
+    },
   },
-  openNav(){
-    
-  }
 }
 </script>
 
 <style scoped>
-
 .top-navbar{
   top:0;
   height: 10%;
@@ -140,4 +131,24 @@ h3{
   display:none;
 }
 }
+
+@media(width < 430px){
+  .nav-item h6{
+    display: none;
+  }
+}
+  @media(width < 913px){
+    .btn {
+  display:none;
+}
+
+}
+
+@media(width < 1025px){
+    a h3 {
+  display:none;
+}
+
+}
+
 </style>

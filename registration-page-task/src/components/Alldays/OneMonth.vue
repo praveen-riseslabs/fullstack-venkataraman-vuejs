@@ -1,5 +1,11 @@
 <template>
   <div class="container my-2">
+    <div v-if="itemList.length > 0" class="date-range my-2">
+      <label for="fromDate">From Date:</label>
+      <input type="date" id="fromDate" v-model="fromDate">
+      <label for="toDate">To Date:</label>
+      <input type="date" id="toDate" v-model="toDate">
+    </div>
     <table v-if="itemList.length > 0" class="table table-bordered table-striped table-hover">
       <thead class="table-dark">
         <tr>
@@ -17,7 +23,7 @@
           <td>{{ filteredItems.startTime }}</td>
           <td>{{ filteredItems.endTime }}</td>
           <td>{{ filteredItems.date }}</td>
-          </tr>
+        </tr>
       </tbody>
     </table>
     <p v-else>No items available</p>
@@ -30,7 +36,10 @@ export default {
   data() {
     return {
       itemList: [],
-      searchKeyword: ''
+      searchKeyword: '',
+      fromDate: '',
+      toDate: '',
+      displayedItems: []
     };
   },
   mounted() {
@@ -44,25 +53,32 @@ export default {
   },
   computed: {
     filteredItems() {
-      // Filtering logic based on searchKeyword
-      if (!this.searchKeyword) {
-        return this.itemList;
-      } else {
+      let filteredList = [...this.itemList];
+      if (this.searchKeyword) {
         const keyword = this.searchKeyword.toLowerCase();
-        return this.itemList.filter(item =>
-          item.title.includes(keyword)
-                  );
-              }
+        filteredList = filteredList.filter(item =>
+          item.title.toLowerCase().includes(keyword)
+        );
+      }
+      if (this.fromDate && this.toDate) {
+        const fromDate = new Date(this.fromDate).getTime();
+        const toDate = new Date(this.toDate).getTime();
+        filteredList = filteredList.filter(item => {
+          const itemDate = new Date(item.date).getTime();
+          return itemDate >= fromDate && itemDate <= toDate;
+        });
+      }
+      return filteredList;
     },
   },
   methods: {
     async fetchDataFromBackend() {
 
       const loginCredentials = {
-        userid:this.$store.getters.finalUserid
+        userid: this.$store.getters.finalUserid
       };
       try {
-        const response = await fetch('http://localhost:8085/user/mainController/oneweek', {
+        const response = await fetch('http://localhost:8085/user/mainController/onemonth', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${this.$store.getters.finalToken}`,
