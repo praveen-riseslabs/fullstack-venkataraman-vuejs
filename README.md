@@ -1,1 +1,0 @@
-Every documentation I provided in each folder according to the technology.
