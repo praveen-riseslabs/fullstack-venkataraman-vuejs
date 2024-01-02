@@ -1,4 +1,4 @@
-package com.riseslabs.registration.emailSenderService;
+package com.riseslabs.registration.emailsenderservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

@@ -1,4 +1,4 @@
-package com.riseslabs.registration.Requests;
+package com.riseslabs.registration.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

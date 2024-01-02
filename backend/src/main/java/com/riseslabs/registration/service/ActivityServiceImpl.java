@@ -11,11 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.riseslabs.registration.Requests.ActivityRequest;
-import com.riseslabs.registration.Requests.UpdateActivityRequest;
-import com.riseslabs.registration.Requests.UseridRequest;
 import com.riseslabs.registration.entity.ActivityEntity;
 import com.riseslabs.registration.repository.ActivityRepository;
+import com.riseslabs.registration.requests.ActivityRequest;
+import com.riseslabs.registration.requests.UpdateActivityRequest;
+import com.riseslabs.registration.requests.UseridRequest;
 
 @Service
 public class ActivityServiceImpl {

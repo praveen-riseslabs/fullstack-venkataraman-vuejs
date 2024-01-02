@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.riseslabs.registration.Requests.ActivityRequest;
-import com.riseslabs.registration.Requests.UpdateActivityRequest;
-import com.riseslabs.registration.Requests.UseridRequest;
 import com.riseslabs.registration.auth.MailTokenRequest;
 import com.riseslabs.registration.service.ActivityServiceImpl;
 import com.riseslabs.registration.service.RegistrationServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 import com.riseslabs.registration.entity.ActivityEntity;
+import com.riseslabs.registration.requests.ActivityRequest;
+import com.riseslabs.registration.requests.UpdateActivityRequest;
+import com.riseslabs.registration.requests.UseridRequest;
 
 @RestController
 @RequiredArgsConstructor

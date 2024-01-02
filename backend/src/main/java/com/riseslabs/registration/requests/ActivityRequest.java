@@ -1,4 +1,4 @@
-package com.riseslabs.registration.Requests;
+package com.riseslabs.registration.requests;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateActivityRequest {
-	private String id;
+public class ActivityRequest {
+
 	private String title;
 	private String desccription;
 	private String startTimeString;
@@ -38,4 +38,3 @@ public class UpdateActivityRequest {
 
 	private String userid;
 }
-
