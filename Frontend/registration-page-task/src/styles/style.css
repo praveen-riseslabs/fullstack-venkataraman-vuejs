@@ -1,0 +1,153 @@
+*{
+      font-family: "Poppins", sans-serif;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0 ;
+    }
+    
+    body{
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      background: linear-gradient( to right, #74B2E1 , #9A5BB4);
+      padding: 20px;
+    }
+    
+    .container{
+    background: #fff;
+    max-width: 700px;
+    width:100%;
+    position: relative;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .container header{
+     font-size:1.5rem;
+     color: #333;
+     font-weight: 500;
+    }
+    
+    .container header span{
+      text-decoration: underline;
+      text-decoration-color: rgb(130,106,251);
+    }
+    
+    .container .form{
+      margin-top:30px;
+    }
+    
+    .container .input-box{
+      width:100%;
+      margin-top:20px;
+    }
+    
+    .input-box label{
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .form .input-box input,
+    .form .input-box option{
+    position: relative;
+    height:50px;
+    width: 100%;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    outline: none;
+    border: 1px solid #707070;
+    border-radius: 6px;
+    padding:0 15px;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form .input-box{
+      width:100%;
+      margin-top: 20px;
+    }
+    
+    .form .column{
+      display:flex;
+      column-gap: 1rem;
+    
+    }
+    .form .column .input-box p{
+      color: red;
+    }
+    
+    .form .gender-box p{
+      color: red;
+    }
+    
+    .form :where(.gender-option, .gender){
+      display: flex;
+      align-items:center;
+      column-gap: 50px;
+      flex-wrap: wrap;
+    }
+    
+    .form .gender{
+      column-gap: 5px;
+    }
+    
+    .gender-box h3{
+      color: #333;
+      font-size: 1rem;
+      font-weight: 400px;
+      margin-bottom: 8px;
+    }
+    
+    .form :where(.gender input, .gender label) {
+     cursor:pointer;
+    }
+    
+    .form .gender-box{
+      margin-top: 20px;
+    }
+    
+    @media screen and (max-width:500px){
+      .form .column{
+        flex-wrap: wrap;
+      }
+    }
+    
+    p {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    
+    
+    .form button{
+      height: 55px;
+      width: 100%;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      margin-top: 30px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 400px;
+      transition: all 0.2s ease;
+      background:linear-gradient( to right, #74B2E1 , #9A5BB4);;
+      }
+    
+      .form button:hover{
+        background-color: rgb(130, 106, 251);
+      }
+    
+      .form .input-box textarea {
+        position: relative;
+        height:200px;
+        width: 100%;
+        font-size: 1rem;
+        color: #707070;
+        margin-top: 8px;
+        outline: none;
+        border: 1px solid #707070;
+        border-radius: 6px;
+        padding:10px 15px;
+        box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.05);
+      }
