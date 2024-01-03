@@ -1,5 +1,9 @@
 <template>
   <div class="container my-2">
+    <input v-if="itemList.length > 0" type="search" 
+          v-model.trim="searchKeyword" 
+          placeholder='Search activity' 
+          class="custom-search  me-5 "/>
     <div v-if="itemList.length > 0" class="date-range my-2">
       <label for="fromDate">From Date:</label>
       <input type="date" id="fromDate" v-model="fromDate">
@@ -9,14 +13,21 @@
     <table v-if="itemList.length > 0" class="table table-bordered table-striped table-hover">
       <thead class="table-dark">
         <tr>
-          <th>Title</th>
+          <!-- <th>Title</th>
           <th>Description</th>
           <th>Start Time</th>
           <th>End Time</th>
-          <th>Date</th>
+          <th>Date</th> -->
+
+      <th @click="sortTable('title')">Title</th>
+      <th @click="sortTable('description')">Description</th>
+      <th @click="sortTable('startTime')">Start Time</th>
+      <th @click="sortTable('endTime')">End Time</th>
+      <th @click="sortTable('date')">Date</th>
+
         </tr>
       </thead>
-      <tbody class="table table-hover">
+      <!-- <tbody class="table table-hover">
         <tr v-for="(filteredItems, index) in filteredItems" :key="index">
           <td>{{ filteredItems.title }}</td>
           <td>{{ filteredItems.description }}</td>
@@ -24,7 +35,16 @@
           <td>{{ filteredItems.endTime }}</td>
           <td>{{ filteredItems.date }}</td>
         </tr>
-      </tbody>
+      </tbody> -->
+      <tbody class="table table-hover">
+  <tr v-for="item in sortedItems" :key="item.id">
+    <td>{{ item.title }}</td>
+    <td>{{ item.description }}</td>
+    <td>{{ item.startTime }}</td>
+    <td>{{ item.endTime }}</td>
+    <td>{{ item.date }}</td>
+  </tr>
+</tbody>
     </table>
     <p v-else>No items available</p>
   </div>
@@ -39,18 +59,15 @@ export default {
       searchKeyword: '',
       fromDate: '',
       toDate: '',
-      displayedItems: []
+      displayedItems: [],
+      sortColumn: '',
+      sortOrder: 1, // Track the sorting order
     };
   },
   mounted() {
     this.fetchDataFromBackend();
-    this.searchKeyword = this.$store.getters.finalSearchkey;
   },
-  watch: {
-    '$store.getters.finalSearchkey'(newVal) {
-      this.searchKeyword = newVal;
-    }
-  },
+ 
   computed: {
     filteredItems() {
       let filteredList = [...this.itemList];
@@ -69,6 +86,21 @@ export default {
         });
       }
       return filteredList;
+    },
+    sortedItems() {
+      const sortedList = [...this.filteredItems];
+      if (this.sortColumn) {
+        sortedList.sort((a, b) => {
+          const valueA = a[this.sortColumn];
+          const valueB = b[this.sortColumn];
+          const modifier = this.sortOrder;
+
+          if (valueA < valueB) return -1 * modifier;
+          if (valueA > valueB) return 1 * modifier;
+          return 0;
+        });
+      }
+      return sortedList;
     },
   },
   methods: {
@@ -92,12 +124,23 @@ export default {
         console.error('Error fetching data:', error);
       }
 
-    }
+    },
+
+    sortTable(column) {
+      if (this.sortColumn === column) {
+        this.sortOrder *= -1;
+      } else {
+        this.sortColumn = column;
+        this.sortOrder = 1;
+      }
+    },
+  
+
   }
 };
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .item-table {
   width: 100%;
   border-collapse: collapse;
@@ -124,4 +167,4 @@ export default {
   border-radius: 4px;
   cursor: pointer;
 }
-</style>
+</style> -->

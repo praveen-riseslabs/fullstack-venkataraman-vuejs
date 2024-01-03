@@ -10,47 +10,41 @@ const app = createApp(App);
 
 const store = createStore({
 
-state(){
-  return{
-    token:'',
-    userid:'',
-    searchKey:'',
-    isSidebarOpen: false, 
-    name:''
-  };
-},
+  state() {
+    return {
+      token: '',
+      userid: '',
+      searchKey: '',
+      isSidebarOpen: false,
+      name: ''
+    };
+  },
 
-mutations:{
-  pass(state,payload){
-    state.token = payload.token;
-    state.userid = payload.userid;
-    state.name = payload.userName;
+  mutations: {
+    pass(state, payload) {
+      state.token = payload.token;
+      state.userid = payload.userid;
+      state.name = payload.userName;
+    },
+    toggleSidebar(state) {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    }
   },
-  searchPass(state,payload){
-    state.searchKey = payload;
-  },
-  toggleSidebar(state) {
-    state.isSidebarOpen = !state.isSidebarOpen; // changed
-  }
-},
 
-getters:{
-  finalToken(state){
-    return state.token;
-  },
-  finalUserid(state){
-    return state.userid;
-  },
-  finalName(state){
-    return state.name;
-  },
-  finalSearchkey(state){
-    return state.searchKey;
-  },
-  isSidebarOpen(state) { // changed
-    return state.isSidebarOpen;
+  getters: {
+    finalToken(state) {
+      return state.token;
+    },
+    finalUserid(state) {
+      return state.userid;
+    },
+    finalName(state) {
+      return state.name;
+    },
+    isSidebarOpen(state) {
+      return state.isSidebarOpen;
+    }
   }
-}
 
 });
 

@@ -1,5 +1,9 @@
 <template>
   <div class="container my-2">
+    <input v-if="itemList.length > 0" type="search" 
+          v-model.trim="searchKeyword" 
+          placeholder='Search activity' 
+          class="custom-search  me-5 "/>
     <div v-if="itemList.length > 0" class="date-range my-2">
       <label for="fromDate">From Date:</label>
       <input type="date" id="fromDate" v-model="fromDate">
@@ -45,12 +49,6 @@ export default {
   },
   mounted() {
     this.fetchDataFromBackend();
-    this.searchKeyword = this.$store.getters.finalSearchkey;
-  },
-  watch: {
-    '$store.getters.finalSearchkey'(newVal) {
-      this.searchKeyword = newVal;
-    }
   },
   computed: {
     filteredItems() {
@@ -98,31 +96,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.item-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.item-table th,
-.item-table td {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-
-.item-table th {
-  background-color: #f0f0f0;
-}
-
-.item-table .action-btn {
-  padding: 6px 10px;
-  margin-right: 5px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>

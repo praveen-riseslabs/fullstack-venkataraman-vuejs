@@ -17,7 +17,19 @@
           </span>
         </router-link>
 
-        <router-link to="/success" class="custom-link">
+        <div id="app">
+          <button class="btn btn-success" @click="toggleCollapse" 
+          style="background-color: #191C24; 
+          border-color: #191C24;
+          padding: 0px;">
+            <span class="list-group-item py-2  text-white ">
+            <i class="bi bi-list-nested me-1" style="color: #b2c237;"></i>
+            <span>My activities</span>
+          </span>
+          </button>
+
+          <div v-if="collapsed">
+            <router-link to="/success" class="custom-link">
           <span class="list-group-item py-2  text-white ">
             <i class="bi bi-activity me-1" style="color: #FC424A;"></i>
             <span class="label">Add activity</span>
@@ -52,6 +64,9 @@
           </span>
         </router-link>
 
+          </div>
+        </div>
+
       </div>
     </div>
   </nav>
@@ -59,6 +74,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      collapsed: false,
+    };
+  },
+  methods: {
+    toggleCollapse() {
+      this.collapsed = !this.collapsed;
+    },
+  },
   computed: {
     isSidebarOpen() {
       return this.$store.getters.isSidebarOpen;
@@ -73,8 +98,10 @@ export default {
   top: 9%;
   bottom: 0;
   height: 91%;
-  transition: transform 0.3s ease; /* Animation for smooth transition */
-  transform: translateX(-100%); /* Hide sidebar by default */
+  transition: transform 0.3s ease;
+  /* Animation for smooth transition */
+  transform: translateX(-100%);
+  /* Hide sidebar by default */
   left: 0;
   background-color: #191C24;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
@@ -83,7 +110,8 @@ export default {
 }
 
 .sidebar.active {
-  transform: translateX(0); /* Show sidebar when active class is added */
+  transform: translateX(0);
+  /* Show sidebar when active class is added */
 }
 
 .bg-custom-color .list-group-item {
@@ -108,28 +136,31 @@ export default {
   padding-left: 0;
 }
 
-@media(width < 431px), (max-width: 541px){
+@media(width < 431px), (max-width: 541px) {
 
   .label {
-  display: none;
-}
+    display: none;
+  }
 
-.list-group li h5{
-  display: none;
-}
+  .list-group li h5 {
+    display: none;
+  }
+
   .sidebar {
-  position: absolute;
-  overflow: auto;
-  top: 9%;
-  bottom: 0;
-  height: 91%;
-  transition: transform 0.3s ease; /* Animation for smooth transition */
-  transform: translateX(-100%); /* Hide sidebar by default */
-  left: 0;
-  background-color: #191C24;
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-  width: 16%;
-  z-index: 600;
-}
+    position: absolute;
+    overflow: auto;
+    top: 9%;
+    bottom: 0;
+    height: 91%;
+    transition: transform 0.3s ease;
+    /* Animation for smooth transition */
+    transform: translateX(-100%);
+    /* Hide sidebar by default */
+    left: 0;
+    background-color: #191C24;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 16%;
+    z-index: 600;
+  }
 }
 </style>
