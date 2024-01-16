@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name="Activity_table")
-public class ActivityEntity {
+public class ActivityModel {
 
 	
 	@Id

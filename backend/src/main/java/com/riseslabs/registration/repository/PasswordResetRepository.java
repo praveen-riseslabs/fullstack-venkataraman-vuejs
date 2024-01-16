@@ -3,10 +3,10 @@ package com.riseslabs.registration.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.riseslabs.registration.model.PasswordReset;
+import com.riseslabs.registration.model.PasswordResetModel;
 
-public interface PasswordResetRepository extends JpaRepository<PasswordReset, Long>{
+public interface PasswordResetRepository extends JpaRepository<PasswordResetModel, Long>{
 	
-	public PasswordReset findPasswordResetByMail(String mail);
+	public PasswordResetModel findPasswordResetByMail(String mail);
 	
 }

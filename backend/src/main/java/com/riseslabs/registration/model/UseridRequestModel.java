@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UseridRequest {
+public class UseridRequestModel {
 	private String userid;
 }

@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.riseslabs.registration.model.MailTokenRequest;
-import com.riseslabs.registration.model.RegistrationEntity;
+import com.riseslabs.registration.model.MailTokenRequestModel;
+import com.riseslabs.registration.model.RegistrationModel;
 import com.riseslabs.registration.repository.RegistrationRepository;
 
 @Service
@@ -18,14 +18,14 @@ public class RegistrationServiceImpl {
 	@Autowired
 	private RegistrationRepository registrationRepository;
 
-	public RegistrationEntity adduser(RegistrationEntity registrationEntity) {
+	public RegistrationModel adduser(RegistrationModel registrationModel) {
 
-		return registrationRepository.save(registrationEntity);
+		return registrationRepository.save(registrationModel);
 
 	}
 
 	public boolean findByPhone(String phone) {
-		RegistrationEntity ex = registrationRepository.findRegistrationEntityByPhone(phone);
+		RegistrationModel ex = registrationRepository.findRegistrationEntityByPhone(phone);
 		if (ex != null)
 			return true;
 		else
@@ -33,7 +33,7 @@ public class RegistrationServiceImpl {
 	}
 
 	public boolean findByEmail(String mail) {
-		RegistrationEntity ex = registrationRepository.findRegistrationEntityByEmail(mail);
+		RegistrationModel ex = registrationRepository.findRegistrationEntityByEmail(mail);
 		if (ex != null)
 			return true;
 		else
@@ -41,7 +41,7 @@ public class RegistrationServiceImpl {
 	}
 
 	public boolean findByUsername(String username) {
-		RegistrationEntity ex = registrationRepository.findRegistrationEntityByUsername(username);
+		RegistrationModel ex = registrationRepository.findRegistrationEntityByUsername(username);
 		if (ex != null)
 			return true;
 		else
@@ -50,7 +50,7 @@ public class RegistrationServiceImpl {
 
 	public boolean getUser(String username) {
 
-		RegistrationEntity user = registrationRepository.findRegistrationEntityByEmailOrPhoneOrUsername(username,
+		RegistrationModel user = registrationRepository.findRegistrationEntityByEmailOrPhoneOrUsername(username,
 				username, username);
 
 		if (user != null) {
@@ -60,9 +60,9 @@ public class RegistrationServiceImpl {
 		}
 	}
 
-	public RegistrationEntity findUser(String username) {
+	public RegistrationModel findUser(String username) {
 
-		RegistrationEntity user = registrationRepository.findRegistrationEntityByEmailOrPhoneOrUsername(username,
+		RegistrationModel user = registrationRepository.findRegistrationEntityByEmailOrPhoneOrUsername(username,
 				username, username);
 
 		if (user != null) {
@@ -72,15 +72,15 @@ public class RegistrationServiceImpl {
 		}
 	}
 
-	public ResponseEntity<String> resetPassword(MailTokenRequest request) {
+	public ResponseEntity<String> resetPassword(MailTokenRequestModel request) {
 
-		RegistrationEntity user = registrationRepository.findRegistrationEntityByEmail(request.getEmail());
+		RegistrationModel user = registrationRepository.findRegistrationEntityByEmail(request.getEmail());
 
 		String password = passwordEncoder.encode(request.getToken());
 
 		user.setPassword(password);
 
-		RegistrationEntity passwordResetEntity = registrationRepository.save(user);
+		RegistrationModel passwordResetEntity = registrationRepository.save(user);
 
 		if (passwordResetEntity != null)
 			return ResponseEntity.status(HttpStatus.OK).body("{\"status\": true}");

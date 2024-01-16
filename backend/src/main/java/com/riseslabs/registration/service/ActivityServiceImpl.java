@@ -11,11 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.riseslabs.registration.model.ActivityEntity;
+import com.riseslabs.registration.model.ActivityModel;
 import com.riseslabs.registration.repository.ActivityRepository;
-import com.riseslabs.registration.model.ActivityRequest;
-import com.riseslabs.registration.model.UpdateActivityRequest;
-import com.riseslabs.registration.model.UseridRequest;
+import com.riseslabs.registration.model.ActivityRequestModel;
+import com.riseslabs.registration.model.UpdateActivityRequestModel;
+import com.riseslabs.registration.model.UseridRequestModel;
 
 @Service
 public class ActivityServiceImpl {
@@ -23,12 +23,12 @@ public class ActivityServiceImpl {
 	@Autowired
 	private ActivityRepository activateRepository;
 
-	public ResponseEntity<String> addActivity(ActivityRequest request) {
-		var activity = ActivityEntity.builder().title(request.getTitle()).description(request.getDesccription())
+	public ResponseEntity<String> addActivity(ActivityRequestModel request) {
+		var activity = ActivityModel.builder().title(request.getTitle()).description(request.getDesccription())
 				.startTime(request.getParsedStartTime()).endTime(request.getParsedEndTime())
 				.time(request.getLocalTime()).date(request.getLocalDate()).userid(request.getUserid()).build();
 
-		ActivityEntity actEntity = activateRepository.save(activity);
+		ActivityModel actEntity = activateRepository.save(activity);
 
 		if (actEntity != null)
 			return ResponseEntity.status(HttpStatus.OK).body("{\"status\": true}");
@@ -37,23 +37,23 @@ public class ActivityServiceImpl {
 
 	}
 
-	public List<ActivityEntity> showAllTodayActivities(UseridRequest request) {
+	public List<ActivityModel> showAllTodayActivities(UseridRequestModel request) {
 
-		List<ActivityEntity> activityEntities = activateRepository.findByUserid(request.getUserid());
+		List<ActivityModel> activityModels = activateRepository.findByUserid(request.getUserid());
 
 		LocalDate currentDate = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String formattedDate = currentDate.format(formatter);
 
-		List<ActivityEntity> todayActivities = activityEntities.stream()
+		List<ActivityModel> todayActivities = activityModels.stream()
 				.filter(activity -> activity.getDate().toString().equals(formattedDate)).collect(Collectors.toList());
 
 		return todayActivities;
 	}
 
-	public List<ActivityEntity> showLastWeekActivities(UseridRequest request) {
+	public List<ActivityModel> showLastWeekActivities(UseridRequestModel request) {
 		// Get all activities for the user
-		List<ActivityEntity> activityEntities = activateRepository.findByUserid(request.getUserid());
+		List<ActivityModel> activityModels = activateRepository.findByUserid(request.getUserid());
 
 		// Get today's date
 		LocalDate currentDate = LocalDate.now().minusDays(1);
@@ -63,7 +63,7 @@ public class ActivityServiceImpl {
 
 		// Filter activities within the date range (from 7 days ago to yesterday at
 		// 11:59 PM)
-		List<ActivityEntity> lastWeekActivities = activityEntities.stream().filter(activity -> {
+		List<ActivityModel> lastWeekActivities = activityModels.stream().filter(activity -> {
 			LocalDate activityDate = activity.getDate();
 			return (!activityDate.isBefore(startDate) && !activityDate.isAfter(currentDate));
 		}).collect(Collectors.toList());
@@ -71,9 +71,9 @@ public class ActivityServiceImpl {
 		return lastWeekActivities;
 	}
 
-	public List<ActivityEntity> showLastMonthActivities(UseridRequest request) {
+	public List<ActivityModel> showLastMonthActivities(UseridRequestModel request) {
 		// Get all activities for the user
-		List<ActivityEntity> activityEntities = activateRepository.findByUserid(request.getUserid());
+		List<ActivityModel> activityModels = activateRepository.findByUserid(request.getUserid());
 
 		// Get today's date
 		LocalDate currentDate = LocalDate.now().minusDays(1);
@@ -83,7 +83,7 @@ public class ActivityServiceImpl {
 
 		// Filter activities within the date range (from 30 days ago to yesterday at
 		// 11:59 PM)
-		List<ActivityEntity> lastWeekActivities = activityEntities.stream().filter(activity -> {
+		List<ActivityModel> lastWeekActivities = activityModels.stream().filter(activity -> {
 			LocalDate activityDate = activity.getDate();
 			return (!activityDate.isBefore(startDate) && !activityDate.isAfter(currentDate));
 		}).collect(Collectors.toList());
@@ -91,9 +91,9 @@ public class ActivityServiceImpl {
 		return lastWeekActivities;
 	}
 
-	public List<ActivityEntity> showLastYearActivities(UseridRequest request) {
+	public List<ActivityModel> showLastYearActivities(UseridRequestModel request) {
 		// Get all activities for the user
-		List<ActivityEntity> activityEntities = activateRepository.findByUserid(request.getUserid());
+		List<ActivityModel> activityModels = activateRepository.findByUserid(request.getUserid());
 
 		// Get today's date
 		LocalDate currentDate = LocalDate.now().minusDays(1);
@@ -103,7 +103,7 @@ public class ActivityServiceImpl {
 
 		// Filter activities within the date range (from 365 days ago to yesterday at
 		// 11:59 PM)
-		List<ActivityEntity> lastWeekActivities = activityEntities.stream().filter(activity -> {
+		List<ActivityModel> lastWeekActivities = activityModels.stream().filter(activity -> {
 			LocalDate activityDate = activity.getDate();
 			return (!activityDate.isBefore(startDate) && !activityDate.isAfter(currentDate));
 		}).collect(Collectors.toList());
@@ -111,19 +111,19 @@ public class ActivityServiceImpl {
 		return lastWeekActivities;
 	}
 
-	public ResponseEntity<String> deleteActivity(UseridRequest request) {
+	public ResponseEntity<String> deleteActivity(UseridRequestModel request) {
 		UUID uuid = UUID.fromString(request.getUserid());
-		ActivityEntity actEntity = activateRepository.findById(uuid).get();
+		ActivityModel actEntity = activateRepository.findById(uuid).get();
 		activateRepository.delete(actEntity);
 		return ResponseEntity.status(HttpStatus.OK).body("{\"status\": true}");
 	}
 	
-	public ResponseEntity<String> updateActivity(UpdateActivityRequest request){
-		var activity = ActivityEntity.builder().title(request.getTitle()).description(request.getDesccription())
+	public ResponseEntity<String> updateActivity(UpdateActivityRequestModel request){
+		var activity = ActivityModel.builder().title(request.getTitle()).description(request.getDesccription())
 				.startTime(request.getParsedStartTime()).id(UUID.fromString(request.getId())).endTime(request.getParsedEndTime())
 				.time(request.getLocalTime()).date(request.getLocalDate()).userid(request.getUserid()).build();
 
-		ActivityEntity actEntity = activateRepository.save(activity);
+		ActivityModel actEntity = activateRepository.save(activity);
 
 		if (actEntity != null)
 			return ResponseEntity.status(HttpStatus.OK).body("{\"status\": true}");

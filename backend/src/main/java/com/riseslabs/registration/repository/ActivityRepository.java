@@ -5,9 +5,9 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.riseslabs.registration.model.ActivityEntity;
+import com.riseslabs.registration.model.ActivityModel;
 
-public interface ActivityRepository extends JpaRepository<ActivityEntity, UUID> {
+public interface ActivityRepository extends JpaRepository<ActivityModel, UUID> {
 	
-	public List<ActivityEntity> findByUserid(String str);
+	public List<ActivityModel> findByUserid(String str);
 }

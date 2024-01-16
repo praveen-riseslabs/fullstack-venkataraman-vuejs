@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.riseslabs.registration.auth.AuthenticationService;
-import com.riseslabs.registration.model.AuthenticationRequest;
-import com.riseslabs.registration.model.AuthenticationResponse;
-import com.riseslabs.registration.model.MailTokenRequest;
-import com.riseslabs.registration.model.RegisterRequest;
+import com.riseslabs.registration.model.AuthenticationRequestModel;
+import com.riseslabs.registration.model.AuthenticationResponseModel;
+import com.riseslabs.registration.model.MailTokenRequestModel;
+import com.riseslabs.registration.model.RegisterRequestModel;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +29,7 @@ public class AuthenticationController {
 
 
 	@PostMapping("/createuser")
-	public ResponseEntity<String> register(@RequestBody RegisterRequest request){
+	public ResponseEntity<String> register(@RequestBody RegisterRequestModel request){
 	
 		return authenticationService.register(request);
 		
@@ -54,18 +54,18 @@ public class AuthenticationController {
     }
 	
 	@PostMapping("/authenticate")
-	public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthenticationRequest request){
+	public ResponseEntity<AuthenticationResponseModel> register(@RequestBody AuthenticationRequestModel request){
 		return ResponseEntity.ok(authenticationService.authenticate(request));
 		
 	}
 	
 	@PostMapping("/authenticatetoken")
-	public ResponseEntity<AuthenticationResponse> authenticateUserExist(@RequestBody AuthenticationRequest request){
+	public ResponseEntity<AuthenticationResponseModel> authenticateUserExist(@RequestBody AuthenticationRequestModel request){
 		return ResponseEntity.ok(authenticationService.userExist(request));
 	}
 	
 	@PostMapping("/savemailtoken")
-	public ResponseEntity<String> saveEmailToken(@RequestBody MailTokenRequest request){
+	public ResponseEntity<String> saveEmailToken(@RequestBody MailTokenRequestModel request){
 		return authenticationService.saveToken(request);
 	}
 }

@@ -4,17 +4,17 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.riseslabs.registration.model.RegistrationEntity;
+import com.riseslabs.registration.model.RegistrationModel;
 
-public interface RegistrationRepository extends JpaRepository<RegistrationEntity, UUID>{
+public interface RegistrationRepository extends JpaRepository<RegistrationModel, UUID>{
 
-	public RegistrationEntity findRegistrationEntityByPhone(String phone);
+	public RegistrationModel findRegistrationEntityByPhone(String phone);
 
-	public RegistrationEntity findRegistrationEntityByEmail(String mail);
+	public RegistrationModel findRegistrationEntityByEmail(String mail);
 
-	public RegistrationEntity findRegistrationEntityByUsername(String username);
+	public RegistrationModel findRegistrationEntityByUsername(String username);
 	
-	public RegistrationEntity findRegistrationEntityByEmailOrPhoneOrUsername(
+	public RegistrationModel findRegistrationEntityByEmailOrPhoneOrUsername(
 	        String email,
 	        String phone,
 	        String username

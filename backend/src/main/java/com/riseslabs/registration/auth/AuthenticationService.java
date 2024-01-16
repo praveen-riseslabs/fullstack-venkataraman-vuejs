@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 
 import com.riseslabs.registration.configuration.JwtService;
 import com.riseslabs.registration.service.EmailSenderService;
-import com.riseslabs.registration.model.AuthenticationRequest;
-import com.riseslabs.registration.model.AuthenticationResponse;
-import com.riseslabs.registration.model.MailTokenRequest;
-import com.riseslabs.registration.model.PasswordReset;
-import com.riseslabs.registration.model.RegisterRequest;
-import com.riseslabs.registration.model.RegistrationEntity;
+import com.riseslabs.registration.model.AuthenticationRequestModel;
+import com.riseslabs.registration.model.AuthenticationResponseModel;
+import com.riseslabs.registration.model.MailTokenRequestModel;
+import com.riseslabs.registration.model.PasswordResetModel;
+import com.riseslabs.registration.model.RegisterRequestModel;
+import com.riseslabs.registration.model.RegistrationModel;
 import com.riseslabs.registration.model.Role;
 import com.riseslabs.registration.repository.PasswordResetRepository;
 import com.riseslabs.registration.repository.RegistrationRepository;
@@ -56,14 +56,14 @@ public class AuthenticationService {
 	@Autowired
 	private final AuthenticationManager authenticationManager;
 
-	public ResponseEntity<String> register(RegisterRequest request) {
+	public ResponseEntity<String> register(RegisterRequestModel request) {
 
-		var user = RegistrationEntity.builder().name(request.getName()).username(request.getUsername())
+		var user = RegistrationModel.builder().name(request.getName()).username(request.getUsername())
 				.email(request.getEmail()).gender(request.getGender()).phone(request.getPhone())
 				.createdAt(request.getCreatedAt()).password(passwordEncoder.encode(request.getPassword()))
 				.role(Role.USER).build();
 
-		RegistrationEntity regEntity = registrationServiceImpl.adduser(user);
+		RegistrationModel regEntity = registrationServiceImpl.adduser(user);
 
 		if (regEntity != null)
 			return ResponseEntity.status(HttpStatus.OK).body("{\"status\": true}");
@@ -72,7 +72,7 @@ public class AuthenticationService {
 
 	}
 
-	public AuthenticationResponse authenticate(AuthenticationRequest request) {
+	public AuthenticationResponseModel authenticate(AuthenticationRequestModel request) {
 
 		authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
@@ -86,7 +86,7 @@ public class AuthenticationService {
 		
 		String name = user.getName();
 
-		return AuthenticationResponse.builder().token(jwtToken).userid(uuid).userName(name).build();
+		return AuthenticationResponseModel.builder().token(jwtToken).userid(uuid).userName(name).build();
 	}
 
 	public List<String> checkExistingFields(String email, String phone, String username) {
@@ -105,18 +105,18 @@ public class AuthenticationService {
 		return existingFields;
 	}
 
-	public AuthenticationResponse userExist(AuthenticationRequest request) {
+	public AuthenticationResponseModel userExist(AuthenticationRequestModel request) {
 
 		var user = registrationRepository.findRegistrationEntityByEmail(request.getEmail());
 		
 		var jwtToken = jwtService.generateToken(user);
 
-		return AuthenticationResponse.builder().token(jwtToken).build();
+		return AuthenticationResponseModel.builder().token(jwtToken).build();
 	}
 
-	public ResponseEntity<String> saveToken(MailTokenRequest request) {
+	public ResponseEntity<String> saveToken(MailTokenRequestModel request) {
 		
-		PasswordReset example = passwordResetRepository.findPasswordResetByMail(request.getEmail());
+		PasswordResetModel example = passwordResetRepository.findPasswordResetByMail(request.getEmail());
 		String token;
 		if(example != null) {
 			example.setToken(request.getToken());
@@ -128,9 +128,9 @@ public class AuthenticationService {
 		}
 			
 				
-		var user = PasswordReset.builder().mail(request.getEmail()).token(request.getToken()).build();
+		var user = PasswordResetModel.builder().mail(request.getEmail()).token(request.getToken()).build();
 		
-		PasswordReset tokenEntity =  passwordResetServiceImpl.addMailToken(user);
+		PasswordResetModel tokenEntity =  passwordResetServiceImpl.addMailToken(user);
 		
 		token = tokenEntity.getToken();
 		

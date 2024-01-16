@@ -3,7 +3,7 @@ package com.riseslabs.registration.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.riseslabs.registration.model.PasswordReset;
+import com.riseslabs.registration.model.PasswordResetModel;
 import com.riseslabs.registration.repository.PasswordResetRepository;
 
 @Service
@@ -12,9 +12,9 @@ public class PasswordResetServiceImpl {
 	@Autowired
 	private PasswordResetRepository passwordResetRepository;
 	
-	public PasswordReset addMailToken(PasswordReset passwordReset) {
+	public PasswordResetModel addMailToken(PasswordResetModel passwordResetModel) {
 		
-		return passwordResetRepository.save(passwordReset);
+		return passwordResetRepository.save(passwordResetModel);
 		
 	}
 

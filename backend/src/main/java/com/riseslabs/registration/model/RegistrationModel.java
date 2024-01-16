@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name="Registration_Page")
-public class RegistrationEntity  implements UserDetails{
+public class RegistrationModel  implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="UUID")
