@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.riseslabs.registration.model.MailTokenRequestModel;
+import com.riseslabs.registration.model.PasswordConfirmationModel;
 import com.riseslabs.registration.model.ActivityModel;
 import com.riseslabs.registration.service.ActivityServiceImpl;
 import com.riseslabs.registration.service.RegistrationServiceImpl;
@@ -56,7 +56,7 @@ public class DemoController {
 	}
 	
 	@PostMapping("/resetpassword")
-	public ResponseEntity<String> resetPassword(@RequestBody MailTokenRequestModel request){
+	public ResponseEntity<String> resetPassword(@RequestBody PasswordConfirmationModel request){
 		
 		return registrationServiceImpl.resetPassword(request);
 	}

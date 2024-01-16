@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.riseslabs.registration.model.MailTokenRequestModel;
+import com.riseslabs.registration.model.PasswordConfirmationModel;
 import com.riseslabs.registration.model.RegistrationModel;
 import com.riseslabs.registration.repository.RegistrationRepository;
 
@@ -72,11 +72,11 @@ public class RegistrationServiceImpl {
 		}
 	}
 
-	public ResponseEntity<String> resetPassword(MailTokenRequestModel request) {
+	public ResponseEntity<String> resetPassword(PasswordConfirmationModel request) {
 
 		RegistrationModel user = registrationRepository.findRegistrationEntityByEmail(request.getEmail());
 
-		String password = passwordEncoder.encode(request.getToken());
+		String password = passwordEncoder.encode(request.getConfirmPassword());
 
 		user.setPassword(password);
 

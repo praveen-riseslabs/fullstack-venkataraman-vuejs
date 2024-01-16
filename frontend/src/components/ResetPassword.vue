@@ -79,7 +79,7 @@ export default {
 
       const loginCredentials = {
         email: this.email.toLowerCase(),
-        token: this.confirmpassword.toLowerCase()
+        confirmPassword: this.confirmpassword.toLowerCase()
       };
       try {
         const response = await fetch('http://localhost:8085/api/private/resetpassword', {

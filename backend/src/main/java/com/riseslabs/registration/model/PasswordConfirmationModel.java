@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MailTokenRequestModel {  
+public class PasswordConfirmationModel {
 	
 	private String email;  
 	
-	private String token;
-	
-
+	private String confirmPassword;
 }
+
+
