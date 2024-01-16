@@ -1,4 +1,4 @@
-package com.riseslabs.registration.auth;
+package com.riseslabs.registration.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.riseslabs.registration.auth.AuthenticationService;
+import com.riseslabs.registration.model.AuthenticationRequest;
+import com.riseslabs.registration.model.AuthenticationResponse;
+import com.riseslabs.registration.model.MailTokenRequest;
+import com.riseslabs.registration.model.RegisterRequest;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/public")
 @RequiredArgsConstructor
 public class AuthenticationController {
 	
@@ -22,14 +28,14 @@ public class AuthenticationController {
 	private final AuthenticationService authenticationService;
 
 
-	@PostMapping("/saveUser")
+	@PostMapping("/createuser")
 	public ResponseEntity<String> register(@RequestBody RegisterRequest request){
 	
 		return authenticationService.register(request);
 		
 	}
 	
-	@PostMapping("/checkUser")
+	@PostMapping("/checkuser")
 	public ResponseEntity<Map<String, Object>> checkUserExists(@RequestBody Map<String, String> userDetails) {
         String email = userDetails.get("email");
         String phone = userDetails.get("phone");
@@ -53,12 +59,12 @@ public class AuthenticationController {
 		
 	}
 	
-	@PostMapping("/authenticateToken")
+	@PostMapping("/authenticatetoken")
 	public ResponseEntity<AuthenticationResponse> authenticateUserExist(@RequestBody AuthenticationRequest request){
 		return ResponseEntity.ok(authenticationService.userExist(request));
 	}
 	
-	@PostMapping("/saveEmailToken")
+	@PostMapping("/savemailtoken")
 	public ResponseEntity<String> saveEmailToken(@RequestBody MailTokenRequest request){
 		return authenticationService.saveToken(request);
 	}

@@ -1,4 +1,4 @@
-package com.riseslabs.registration.entity;
+package com.riseslabs.registration.model;
 
 import java.util.Collection;
 import java.util.List;

@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.riseslabs.registration.auth.MailTokenRequest;
-import com.riseslabs.registration.entity.RegistrationEntity;
+import com.riseslabs.registration.model.MailTokenRequest;
+import com.riseslabs.registration.model.RegistrationEntity;
 import com.riseslabs.registration.repository.RegistrationRepository;
 
 @Service

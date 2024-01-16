@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.riseslabs.registration.entity.RegistrationEntity;
+import com.riseslabs.registration.model.RegistrationEntity;
 
 public interface RegistrationRepository extends JpaRepository<RegistrationEntity, UUID>{
 

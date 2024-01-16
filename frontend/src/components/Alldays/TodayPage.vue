@@ -66,7 +66,7 @@ export default {
         userid:this.$store.getters.finalUserid
       };
       try {
-        const response = await fetch('http://localhost:8085/user/mainController/today', {
+        const response = await fetch('http://localhost:8085/api/private/today', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${this.$store.getters.finalToken}`,

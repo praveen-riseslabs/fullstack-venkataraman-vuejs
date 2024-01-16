@@ -107,7 +107,7 @@ export default {
       };
 
       try {
-        const response = await fetch('http://localhost:8085/user/authenticate', {
+        const response = await fetch('http://localhost:8085/api/public/authenticate', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

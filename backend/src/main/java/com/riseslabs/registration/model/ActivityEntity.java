@@ -1,4 +1,4 @@
-package com.riseslabs.registration.entity;
+package com.riseslabs.registration.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

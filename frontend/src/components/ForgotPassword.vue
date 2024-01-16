@@ -88,7 +88,7 @@ export default {
       };
 
       try {
-        const response = await fetch('http://localhost:8085/user/checkUser', {
+        const response = await fetch('http://localhost:8085/api/public/checkuser', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ export default {
       };
 
       try {
-        const response = await fetch('http://localhost:8085/user/authenticateToken', {
+        const response = await fetch('http://localhost:8085/api/public/authenticatetoken', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ export default {
       }
 
       try {
-        const response = await fetch('http://localhost:8085/user/saveEmailToken', {
+        const response = await fetch('http://localhost:8085/api/public/savemailtoken', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

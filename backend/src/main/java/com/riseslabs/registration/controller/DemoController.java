@@ -1,37 +1,36 @@
-package com.riseslabs.registration.demo;
+package com.riseslabs.registration.controller;
 
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.riseslabs.registration.auth.MailTokenRequest;
+import com.riseslabs.registration.model.MailTokenRequest;
+import com.riseslabs.registration.model.ActivityEntity;
 import com.riseslabs.registration.service.ActivityServiceImpl;
 import com.riseslabs.registration.service.RegistrationServiceImpl;
 
 import lombok.RequiredArgsConstructor;
-import com.riseslabs.registration.entity.ActivityEntity;
-import com.riseslabs.registration.requests.ActivityRequest;
-import com.riseslabs.registration.requests.UpdateActivityRequest;
-import com.riseslabs.registration.requests.UseridRequest;
+
+import com.riseslabs.registration.model.ActivityRequest;
+import com.riseslabs.registration.model.UpdateActivityRequest;
+import com.riseslabs.registration.model.UseridRequest;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user/mainController")
+@RequestMapping("/api/private")
 public class DemoController {
 	
 	private final RegistrationServiceImpl registrationServiceImpl;
 	private final ActivityServiceImpl activityServiceImpl;
 	
-	@PostMapping("/addActivity")
+	@PostMapping("/addactivity")
 	public ResponseEntity<String> addActivity(@RequestBody ActivityRequest request){
 		return activityServiceImpl.addActivity(request);
 	}
@@ -56,12 +55,7 @@ public class DemoController {
 		return activityServiceImpl.showLastYearActivities(request);
 	}
 	
-	@GetMapping("/sample")
-	public String hello(){
-		return "hello world";
-	}
-	
-	@PostMapping("/resetPassword")
+	@PostMapping("/resetpassword")
 	public ResponseEntity<String> resetPassword(@RequestBody MailTokenRequest request){
 		
 		return registrationServiceImpl.resetPassword(request);
@@ -72,7 +66,7 @@ public class DemoController {
 		return activityServiceImpl.deleteActivity(request);
 	}
 	
-	@PutMapping("/updateActivity")
+	@PutMapping("/updateactivity")
 	public ResponseEntity<String> update(@RequestBody UpdateActivityRequest request){
 		return activityServiceImpl.updateActivity(request);
 	}

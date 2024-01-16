@@ -28,7 +28,7 @@
           </span>
           </button>
 
-          <div v-if="collapsed">
+          <div v-if="collapsed" class="effect">
             <router-link to="/success" class="custom-link">
           <span class="list-group-item py-2  text-white ">
             <i class="bi bi-activity me-1" style="color: #FC424A;"></i>
@@ -161,6 +161,10 @@ export default {
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
     width: 16%;
     z-index: 600;
+  }
+
+  .effect{
+    transition: transform 0.3s ease;
   }
 }
 </style>

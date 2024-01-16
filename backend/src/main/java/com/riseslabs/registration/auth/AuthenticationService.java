@@ -13,10 +13,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.riseslabs.registration.configuration.JwtService;
-import com.riseslabs.registration.emailsenderservice.EmailSenderService;
-import com.riseslabs.registration.entity.PasswordReset;
-import com.riseslabs.registration.entity.RegistrationEntity;
-import com.riseslabs.registration.entity.Role;
+import com.riseslabs.registration.service.EmailSenderService;
+import com.riseslabs.registration.model.AuthenticationRequest;
+import com.riseslabs.registration.model.AuthenticationResponse;
+import com.riseslabs.registration.model.MailTokenRequest;
+import com.riseslabs.registration.model.PasswordReset;
+import com.riseslabs.registration.model.RegisterRequest;
+import com.riseslabs.registration.model.RegistrationEntity;
+import com.riseslabs.registration.model.Role;
 import com.riseslabs.registration.repository.PasswordResetRepository;
 import com.riseslabs.registration.repository.RegistrationRepository;
 import com.riseslabs.registration.service.PasswordResetServiceImpl;

@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.riseslabs.registration.entity.RegistrationEntity;
+import com.riseslabs.registration.model.RegistrationEntity;
 import com.riseslabs.registration.repository.RegistrationRepository;
 
 import lombok.RequiredArgsConstructor;

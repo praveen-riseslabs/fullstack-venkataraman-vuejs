@@ -1,4 +1,4 @@
-package com.riseslabs.registration.auth;
+package com.riseslabs.registration.model;
 
 
 import lombok.AllArgsConstructor;

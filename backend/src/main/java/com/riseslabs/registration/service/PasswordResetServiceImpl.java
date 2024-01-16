@@ -3,7 +3,7 @@ package com.riseslabs.registration.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.riseslabs.registration.entity.PasswordReset;
+import com.riseslabs.registration.model.PasswordReset;
 import com.riseslabs.registration.repository.PasswordResetRepository;
 
 @Service

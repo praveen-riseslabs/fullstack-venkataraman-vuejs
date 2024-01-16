@@ -145,7 +145,7 @@ export default {
       try {
         let response;
         if(this.id){
-           response = await fetch('http://localhost:8085/user/mainController/updateActivity', {
+           response = await fetch('http://localhost:8085/api/private/updateactivity', {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${this.$store.getters.finalToken}`,
@@ -156,7 +156,7 @@ export default {
         }
 
         else{
-         response = await fetch('http://localhost:8085/user/mainController/addActivity', {
+         response = await fetch('http://localhost:8085/api/private/addactivity', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${this.$store.getters.finalToken}`,

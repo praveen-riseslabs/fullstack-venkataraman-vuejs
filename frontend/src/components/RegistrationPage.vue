@@ -181,7 +181,7 @@ export default {
       };
 
       try {
-        const response = await fetch('http://localhost:8085/user/checkUser', {
+        const response = await fetch('http://localhost:8085/api/public/checkuser', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -250,7 +250,7 @@ export default {
         gender: this.gender.toLowerCase()
       };
       try {
-        const response = await fetch('http://localhost:8085/user/saveUser', {
+        const response = await fetch('http://localhost:8085/api/public/createuser', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

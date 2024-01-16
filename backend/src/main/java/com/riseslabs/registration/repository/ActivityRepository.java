@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.riseslabs.registration.entity.ActivityEntity;
+import com.riseslabs.registration.model.ActivityEntity;
 
 public interface ActivityRepository extends JpaRepository<ActivityEntity, UUID> {
 	

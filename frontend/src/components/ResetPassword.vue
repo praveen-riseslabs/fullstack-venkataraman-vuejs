@@ -82,7 +82,7 @@ export default {
         token: this.confirmpassword.toLowerCase()
       };
       try {
-        const response = await fetch('http://localhost:8085/user/mainController/resetPassword', {
+        const response = await fetch('http://localhost:8085/api/private/resetpassword', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${this.Token}`,

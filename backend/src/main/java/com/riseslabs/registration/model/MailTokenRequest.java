@@ -1,4 +1,4 @@
-package com.riseslabs.registration.auth;
+package com.riseslabs.registration.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,14 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class MailTokenRequest {  //we used this for password also
 	
-	private String email;
+	private String email;  
 	
-	private String phone;
+	private String token;
 	
-	private String username;
-	
-	String password;
 
 }
